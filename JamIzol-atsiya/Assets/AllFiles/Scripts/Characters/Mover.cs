@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class CharactersMover : MonoBehaviour
+public class Mover : MonoBehaviour
 {
     NavMeshAgent agent;
     Camera mainCamera;
+    public bool canMove;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         mainCamera = Camera.main;
+        canMove = true;
     }
 
     void Update()
