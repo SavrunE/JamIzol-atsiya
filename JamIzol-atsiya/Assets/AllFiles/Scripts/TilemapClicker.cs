@@ -23,7 +23,7 @@ public class TilemapClicker : MonoBehaviour
 
             Vector3Int clickCellPosition = map.WorldToCell(clickWorldPosition);
 
-
+            Debug.Log(clickCellPosition);
             PointerFlag.position = map.CellToWorld(clickCellPosition);
         }
     }
