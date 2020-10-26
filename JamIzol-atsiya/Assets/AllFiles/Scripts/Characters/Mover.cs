@@ -5,14 +5,16 @@ using UnityEngine.AI;
 
 public class Mover : MonoBehaviour
 {
-    NavMeshAgent agent;
-    Camera mainCamera;
     public bool canMove;
+
+    private NavMeshAgent agent;
+    private Camera mainCamera;
     void Start()
     {
+        canMove = true;
+
         agent = GetComponent<NavMeshAgent>();
         mainCamera = Camera.main;
-        canMove = true;
     }
 
     void Update()
@@ -21,9 +23,10 @@ public class Mover : MonoBehaviour
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
+
             if (Physics.Raycast(ray, out hit))
             {
-                agent.destination = hit.point;
+                agent.SetDestination(hit.point);
             }
         }
     }

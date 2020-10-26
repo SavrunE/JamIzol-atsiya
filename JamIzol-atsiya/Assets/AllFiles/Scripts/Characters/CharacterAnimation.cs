@@ -6,9 +6,10 @@ using UnityEngine.AI;
 public class CharacterAnimation : MonoBehaviour
 {
     private bool isMoving = true;
-    NavMeshAgent agent;
-    Animator animator;
-    Mover mover;
+
+    private NavMeshAgent agent;
+    private Animator animator;
+    private Mover mover;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
