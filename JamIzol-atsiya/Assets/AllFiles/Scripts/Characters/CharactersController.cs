@@ -4,64 +4,78 @@ using UnityEngine;
 
 public class CharactersController : MonoBehaviour
 {
-    [Range (1, 100)]
+    [Range(1, 100)]
     public int AttackDamage = 10;
     private Mover mover;
     private Collider target;
     private Collider checkTarget;
     private CubeController targetWall;
+    private Color targetColor;
+    private bool IsDigging;
     void Start()
     {
+        IsDigging = false;
         mover = GetComponent<Mover>();
+        target = mover.raycastHit.collider;
+        checkTarget = target;
     }
     private void Update()
     {
         target = mover.raycastHit.collider;
-
-        if (target != checkTarget)
+        if(checkTarget != target)
         {
-            checkTarget = target;
-            targetWall = GetCubeController(target);
-            StopCoroutine(AttackWall());
+            IsDigging = false; //сделать свзяь эвентом с  mover.canMove
         }
 
-        if (target != null 
-            && target.tag == "Wall"
-            && Vector3.Distance(target.transform.position, transform.position) < 2f)
+        if (target != null && target.tag != "Ground")
         {
-            StartCoroutine(AttackWall());
-            
+            targetWall = GetCubeController(target);
+            StartCoroutine(CheckDistanceToWall());
         }
     }
-    public IEnumerator AttackWall()
+    private IEnumerator CheckDistanceToWall()
     {
-        bool canMove = mover.canMove;
-        canMove = false;
+        //StopCoroutine(AttackWall());
+        if (target.tag == "Wall" && Vector3.Distance(target.transform.position, transform.position) < 2f)
+        {
+            StartCoroutine(AttackWall());
+            if (!IsDigging)
+            {
+                mover.canMove = true;
+                StopCoroutine(AttackWall());
+                yield break;
+            }
+        }
+    }
+    private IEnumerator AttackWall()
+    {
+        mover.canMove = false;
+        IsDigging = true;
 
-        
         float maxHP = targetWall.MaxHP;
-        Color validColor = targetWall.ValidColor;
 
         targetWall.ValidHP -= AttackDamage * Time.deltaTime;
         Debug.Log(targetWall.ValidHP);
         if (targetWall.ValidHP <= 0)
         {
             target.gameObject.SetActive(false);
-            canMove = true;
-            yield return new WaitForFixedUpdate();
+            mover.canMove = true;
+            IsDigging = false;
         }
         else
         {
-            float redCollar = (maxHP - targetWall.ValidHP) / maxHP;
+            float redColar = (maxHP - targetWall.ValidHP) / maxHP;
 
-            targetWall.gameObject.GetComponent<MeshRenderer>().material.color = Color.Lerp(targetWall.gameObject.GetComponent<MeshRenderer>().material.color, Color.red, redCollar * Time.deltaTime);
-            //targetColor = Color.Lerp(targetColor, red, targetWall.ValidHP);
+            targetWall.gameObject.GetComponent<MeshRenderer>().material.color = Color.Lerp(targetColor, Color.red, redColar * Time.deltaTime);
         }
+        yield break;
     }
     private CubeController GetCubeController(Collider collider)
     {
         CubeController result;
         result = collider.gameObject.GetComponent<CubeController>();
+        targetColor = collider.gameObject.GetComponent<MeshRenderer>().material.color;
+
         return result;
     }
 }
