@@ -7,6 +7,7 @@ using System;
 public class Mover : MonoBehaviour
 {
     public bool canMove;
+    public RaycastHit raycastHit;
 
     private NavMeshAgent agent;
     private Camera mainCamera;
@@ -22,12 +23,13 @@ public class Mover : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(1))
         {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            canMove = true;
 
-            if (Physics.Raycast(ray, out hit))
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out raycastHit))
             {
-                agent.SetDestination(hit.point);
+                agent.SetDestination(raycastHit.point);
                 
             }
         }

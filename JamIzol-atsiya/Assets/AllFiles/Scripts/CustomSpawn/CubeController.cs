@@ -26,14 +26,22 @@ public class CubeController : MonoBehaviour
     //мб успею сложность докрутить
     public float HardValue = 10f;
 
-    private float cubeHP;
+    [HideInInspector]
+    public float MaxHP;
+    [HideInInspector]
+    public float ValidHP;
+    [HideInInspector]
+    public Color ValidColor;
+
     private MeshRenderer meshRenderer;
     private MaterialRender materialRender;
     private void Awake()
     {
-        cubeHP = (CubePower + 1) * HardValue;
+        MaxHP = (CubePower + 1) * HardValue;
+        ValidHP = MaxHP;
         meshRenderer = GetComponent<MeshRenderer>();
         materialRender = GameObject.FindGameObjectWithTag("GameController").GetComponent<MaterialRender>();
+
         meshRenderer.material = materialRender.AllCubesMaterial[CubePower];
     }
 }
