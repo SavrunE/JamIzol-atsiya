@@ -15,7 +15,7 @@ public class RoomsPlacer : MonoBehaviour
 
     private int centerMap;
 
-    void Start()
+    private IEnumerator Start()
     {
         spawnedRooms = new Room[LockationLength, LockationLength];
         centerMap = LockationLength / 2;
@@ -24,12 +24,8 @@ public class RoomsPlacer : MonoBehaviour
         for (int i = 0; i < spawnCount; i++)
         {
             PlaceOneRoom();
+            yield return new WaitForSecondsRealtime(0.5f);
         }
-    }
-
-    void Update()
-    {
-        
     }
     private void PlaceOneRoom()
     {

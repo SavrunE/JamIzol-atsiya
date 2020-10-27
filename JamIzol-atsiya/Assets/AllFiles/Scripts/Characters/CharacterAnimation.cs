@@ -35,14 +35,25 @@ public class CharacterAnimation : MonoBehaviour
         if ((forwardVelocity == 0 && rightVelocity == 0) || !mover.canMove)
         {
             isMoving = false;
+            Dialog();
         }
         else
         {
             isMoving = true;
+
+            VelocityAnimation(forwardVelocity, rightVelocity);
         }
 
         animator.SetBool("IsMoving", isMoving);
-        animator.SetFloat("ForwardVelocity", forwardVelocity);
-        animator.SetFloat("RightVelocity", rightVelocity);
+    }
+    public void Dialog()
+    {
+        //смотреть на собеседничка и передавать 
+        //VelocityAnimation(forwardVelocity, rightVelocity)
+    }
+    public void VelocityAnimation(float forward, float right)
+    {
+        animator.SetFloat("ForwardVelocity", forward);
+        animator.SetFloat("RightVelocity", right);
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 public class Mover : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Mover : MonoBehaviour
         canMove = true;
 
         agent = GetComponent<NavMeshAgent>();
-        mainCamera = Camera.main;
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
     void Update()
@@ -27,6 +28,7 @@ public class Mover : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 agent.SetDestination(hit.point);
+                
             }
         }
     }

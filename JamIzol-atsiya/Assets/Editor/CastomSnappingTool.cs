@@ -5,7 +5,7 @@ using UnityEditor.EditorTools;
 using UnityEditor.Experimental.SceneManagement;
 using UnityEngine;
 
-[EditorTool("Castom snap move", typeof(CustomSnap))]
+[EditorTool("Castom snap move", typeof(CubeController))]
 public class CastomSnappingTool : EditorTool
 {
     public Texture2D ToolIcon;
@@ -35,7 +35,7 @@ public class CastomSnappingTool : EditorTool
     }
     public override void OnToolGUI(EditorWindow window)
     {
-        Transform targetTransform = ((CustomSnap)target).transform;
+        Transform targetTransform = ((CubeController)target).transform;
 
         if (targetTransform != oldTarget)
         {
