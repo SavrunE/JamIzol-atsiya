@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &8263406069258551129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &751874697130297571
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,7 +670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &5861712363602113173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,7 +684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &847765247767043855
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,7 +816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &6080482007758918844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -830,7 +830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &877943602307435074
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,7 +962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &7589714696258019451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -976,7 +976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &990513406480042718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,7 +1108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &1102565709057662308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1122,7 +1122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &1060405520097665825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,7 +1254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &4264651200122561389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1268,7 +1268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &1394564928171074927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,7 +1443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &2413949920365058951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1457,7 +1457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &1407847817571404011
 GameObject:
   m_ObjectHideFlags: 0
@@ -2277,7 +2277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &4376912175827163647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2291,7 +2291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &2889790439757217885
 GameObject:
   m_ObjectHideFlags: 0
@@ -2810,7 +2810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &3933226891963403837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2824,7 +2824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &3855045412703680471
 GameObject:
   m_ObjectHideFlags: 0
@@ -3085,7 +3085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &4228224791639533691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3099,7 +3099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &4059125621019650811
 GameObject:
   m_ObjectHideFlags: 0
@@ -3231,7 +3231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &4000778854292292886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3245,7 +3245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &4059397337190925936
 GameObject:
   m_ObjectHideFlags: 0
@@ -3549,7 +3549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &9122933450519875189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3563,7 +3563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &4472532747075105274
 GameObject:
   m_ObjectHideFlags: 0
@@ -3917,8 +3917,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3020964437002248001}
-  - component: {fileID: 6901008991000106428}
-  - component: {fileID: 8146493580956340360}
   m_Layer: 0
   m_Name: Wall (2)
   m_TagString: Untagged
@@ -3951,61 +3949,6 @@ Transform:
   m_Father: {fileID: 775300818772638484}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!23 &6901008991000106428
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5087230598816981368}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8146493580956340360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5087230598816981368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e49a5b4d3d1519a42a2db718ac21191a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CubePower: 0
-  Material: 0
 --- !u!1 &5395415030058929988
 GameObject:
   m_ObjectHideFlags: 0
@@ -4868,7 +4811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &8836335779425559664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4882,7 +4825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &6566505805584318010
 GameObject:
   m_ObjectHideFlags: 0
@@ -4978,8 +4921,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6134183920329959154}
-  - component: {fileID: 4842462960234170258}
-  - component: {fileID: 3797249495715816350}
   m_Layer: 0
   m_Name: Wall (3)
   m_TagString: Untagged
@@ -5012,61 +4953,6 @@ Transform:
   m_Father: {fileID: 775300818772638484}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &4842462960234170258
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6826738721451603414}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3797249495715816350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6826738721451603414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e49a5b4d3d1519a42a2db718ac21191a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CubePower: 0
-  Material: 0
 --- !u!1 &6918319590010421313
 GameObject:
   m_ObjectHideFlags: 0
@@ -5370,7 +5256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &4444089527909554217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5384,7 +5270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &7479470558945724326
 GameObject:
   m_ObjectHideFlags: 0
@@ -5602,7 +5488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &2226811993983162309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5616,7 +5502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &7737550425030532046
 GameObject:
   m_ObjectHideFlags: 0
@@ -5748,7 +5634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &2635971033389864420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5762,7 +5648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &7812897806942875030
 GameObject:
   m_ObjectHideFlags: 0
@@ -5894,7 +5780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &3121516846702382000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5908,7 +5794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &7826104232592772031
 GameObject:
   m_ObjectHideFlags: 0
@@ -6169,7 +6055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &4402447279496363389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6183,7 +6069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &8171248235920497657
 GameObject:
   m_ObjectHideFlags: 0
@@ -6358,7 +6244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &4802601006253159100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6372,7 +6258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &8449279320319192475
 GameObject:
   m_ObjectHideFlags: 0
@@ -6805,7 +6691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &3005130696020727477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6819,7 +6705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &9078655762381479043
 GameObject:
   m_ObjectHideFlags: 0
@@ -7037,7 +6923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &1912380209593809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7051,7 +6937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1 &9183497865548462398
 GameObject:
   m_ObjectHideFlags: 0
@@ -7226,7 +7112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!114 &2265287982736627571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7240,7 +7126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubePower: 0
-  Material: 0
+  HardValue: 10
 --- !u!1001 &6420173687057728191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7296,7 +7182,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7918523677318726941, guid: e1d288d9b4b567e4586e957e4f745f63, type: 3}
+    - {fileID: 4450559772102615782, guid: e1d288d9b4b567e4586e957e4f745f63, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e1d288d9b4b567e4586e957e4f745f63, type: 3}
 --- !u!4 &7291360988997760494 stripped
 Transform:
