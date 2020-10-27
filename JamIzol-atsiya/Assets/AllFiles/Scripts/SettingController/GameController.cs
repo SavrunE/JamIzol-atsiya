@@ -6,19 +6,19 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public KeyCode HotKey = KeyCode.Space;
-    public event EventHandler<OnSpacePressedEventArgs> OnStopTime;
+    public event EventHandler<OnSpacePressedEventArgs> OnStopTime;//
 
     public KeyCode OpenMenu = KeyCode.I;
     public event Action<String> OnOpenMenu;
 
     private int keyCount;
-    public class OnSpacePressedEventArgs : EventArgs
+    public class OnSpacePressedEventArgs : EventArgs//
     {
         public int KeyCount;
     }
     private void Start()
     {
-        OnStopTime += TestingHotKey;
+        OnStopTime += TestingHotKey;//
     }
   
     private void Update()
@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyDown(HotKey))
         {
             keyCount++;
-            if (OnStopTime != null) OnStopTime(this, new OnSpacePressedEventArgs { KeyCount = keyCount}); //OnStopTime?.Invoke(this, EventArgs.Empty);
+            if (OnStopTime != null) OnStopTime(this, new OnSpacePressedEventArgs { KeyCount = keyCount}); //OnStopTime?.Invoke(this, EventArgs.Empty);//
         }
         if (Input.GetKeyDown(OpenMenu)) 
         {

@@ -14,6 +14,8 @@ public class CharactersController : MonoBehaviour
     private CubeController targetWall;
     private Color targetColor;
 
+    private bool attackWall = false;
+
     private Action OnDestroyWall;
     private Action OnAttackWall;
     
@@ -29,24 +31,25 @@ public class CharactersController : MonoBehaviour
     }
     private void Update()
     {
-        OnAttackWall?.Invoke();
+        if (attackWall)
+        {
+            AttackWall();
+        }
     }
     private void RightClick()
     {
-        Debug.Log(target);
-        Debug.Log(checkTarget);
+        
         target = mover.raycastHit.collider;
 
-        //Проверим, не на тот-же куб мы нажали
+        //Проверим, не на тот-же коллайдер мы нажали
         if(checkTarget != target)
         {
+            attackWall = false;
             checkTarget = target;
 
-            Debug.Log(target);
-            Debug.Log(checkTarget);
-            if (target != null && target.tag != "Ground" && target.tag == "Wall")
+            if (target.tag == "Wall")
             {
-                targetWall = GetCubeController(target);
+                targetWall = GetCubeController(target, targetColor);
                 StartCoroutine(CheckDistanceToWall());
             }
         }
@@ -55,7 +58,8 @@ public class CharactersController : MonoBehaviour
     {
         if (Vector3.Distance(target.transform.position, transform.position) < 2f)
         {
-            OnAttackWall += AttackWall;
+            attackWall = true;
+            yield break;
         }
         else
         {
@@ -64,24 +68,24 @@ public class CharactersController : MonoBehaviour
     }
     private void AttackWall()
     {
-        float maxHP = targetWall.MaxHP;
+       float maxHP = targetWall.MaxHP;
 
         targetWall.ValidHP -= AttackDamage * Time.deltaTime;
-       
+        Debug.Log(targetWall);
         if (targetWall.ValidHP > 0)
         {
+           
             mover.canMove = false;
 
             float redColor = (maxHP - targetWall.ValidHP) / maxHP;
 
             targetWall.gameObject.GetComponent<MeshRenderer>().material.color = Color.Lerp(targetColor, Color.red, redColor * Time.deltaTime);
-            
         }
         else
         {
             target.gameObject.SetActive(false);
             mover.canMove = true;
-            OnAttackWall -= AttackWall;
+            attackWall = false;
         }
     }
    
@@ -89,7 +93,7 @@ public class CharactersController : MonoBehaviour
     {
 
     }
-    private CubeController GetCubeController(Collider collider)
+    private CubeController GetCubeController(Collider collider, Color targetColor)
     {
         CubeController result;
         result = collider.gameObject.GetComponent<CubeController>();
