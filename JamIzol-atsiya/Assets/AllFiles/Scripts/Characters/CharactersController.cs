@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CharactersController : MonoBehaviour
 {
@@ -11,64 +13,81 @@ public class CharactersController : MonoBehaviour
     private Collider checkTarget;
     private CubeController targetWall;
     private Color targetColor;
-    private bool IsDigging;
+
+    private Action OnDestroyWall;
+    private Action OnAttackWall;
+    
     void Start()
     {
-        IsDigging = false;
         mover = GetComponent<Mover>();
+
         target = mover.raycastHit.collider;
         checkTarget = target;
+
+        OnDestroyWall += DestroyWallEvent;
+        mover.OnRightClick += RightClick;
     }
     private void Update()
     {
+        OnAttackWall?.Invoke();
+    }
+    private void RightClick()
+    {
+        Debug.Log(target);
+        Debug.Log(checkTarget);
         target = mover.raycastHit.collider;
+
+        //Проверим, не на тот-же куб мы нажали
         if(checkTarget != target)
         {
-            IsDigging = false; //сделать свзяь эвентом с  mover.canMove
-        }
+            checkTarget = target;
 
-        if (target != null && target.tag != "Ground")
-        {
-            targetWall = GetCubeController(target);
-            StartCoroutine(CheckDistanceToWall());
+            Debug.Log(target);
+            Debug.Log(checkTarget);
+            if (target != null && target.tag != "Ground" && target.tag == "Wall")
+            {
+                targetWall = GetCubeController(target);
+                StartCoroutine(CheckDistanceToWall());
+            }
         }
     }
     private IEnumerator CheckDistanceToWall()
     {
-        //StopCoroutine(AttackWall());
-        if (target.tag == "Wall" && Vector3.Distance(target.transform.position, transform.position) < 2f)
+        if (Vector3.Distance(target.transform.position, transform.position) < 2f)
         {
-            StartCoroutine(AttackWall());
-            if (!IsDigging)
-            {
-                mover.canMove = true;
-                StopCoroutine(AttackWall());
-                yield break;
-            }
-        }
-    }
-    private IEnumerator AttackWall()
-    {
-        mover.canMove = false;
-        IsDigging = true;
-
-        float maxHP = targetWall.MaxHP;
-
-        targetWall.ValidHP -= AttackDamage * Time.deltaTime;
-        Debug.Log(targetWall.ValidHP);
-        if (targetWall.ValidHP <= 0)
-        {
-            target.gameObject.SetActive(false);
-            mover.canMove = true;
-            IsDigging = false;
+            OnAttackWall += AttackWall;
         }
         else
         {
-            float redColar = (maxHP - targetWall.ValidHP) / maxHP;
-
-            targetWall.gameObject.GetComponent<MeshRenderer>().material.color = Color.Lerp(targetColor, Color.red, redColar * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
         }
-        yield break;
+    }
+    private void AttackWall()
+    {
+        float maxHP = targetWall.MaxHP;
+
+        targetWall.ValidHP -= AttackDamage * Time.deltaTime;
+       
+        if (targetWall.ValidHP > 0)
+        {
+            mover.canMove = false;
+
+            float redColor = (maxHP - targetWall.ValidHP) / maxHP;
+
+            targetWall.gameObject.GetComponent<MeshRenderer>().material.color = Color.Lerp(targetColor, Color.red, redColor * Time.deltaTime);
+            
+        }
+        else
+        {
+            target.gameObject.SetActive(false);
+            mover.canMove = true;
+            OnAttackWall -= AttackWall;
+        }
+    }
+   
+    private void DestroyWallEvent()
+    {
+
     }
     private CubeController GetCubeController(Collider collider)
     {
