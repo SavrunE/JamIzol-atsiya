@@ -23,11 +23,15 @@ public class CubeController : MonoBehaviour
 {
     [Range(0,7)]
     public int CubePower ;
-    public CubeMaterial Material;
+    //мб успею сложность докрутить
+    public float HardValue = 10f;
+
+    private float cubeHP;
     private MeshRenderer meshRenderer;
     private MaterialRender materialRender;
     private void Awake()
     {
+        cubeHP = (CubePower + 1) * HardValue;
         meshRenderer = GetComponent<MeshRenderer>();
         materialRender = GameObject.FindGameObjectWithTag("GameController").GetComponent<MaterialRender>();
         meshRenderer.material = materialRender.AllCubesMaterial[CubePower];
