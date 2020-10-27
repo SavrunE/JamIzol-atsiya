@@ -15,11 +15,11 @@ public class CastomSnappingTool : EditorTool
     CustomSnapPoint[] allPoint;
     CustomSnapPoint[] targetPoints;
 
-    private void OnEnable()
-    {
-        Debug.Log("CastomSnappingTool activated");
+    //private void OnEnable()
+    //{
+    //    Debug.Log("CastomSnappingTool activated");
 
-    }
+    //}
 
     public override GUIContent toolbarIcon
     {

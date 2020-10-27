@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Interaction
+  - Character
+  - Wall
   layers:
   - Default
   - TransparentFX
