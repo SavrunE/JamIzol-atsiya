@@ -4,48 +4,48 @@ using System.Collections;
 public class UnitComponent : MonoBehaviour
 {
 	
-	[SerializeField] private UnitType _type; // выбрать тип юнита
+	[SerializeField] private UnitType type; // выбрать тип юнита
 
-	private int _id;
-	private string _iconName;
-	private bool _isSelected;
+	private int id;
+	private string iconName;
+	private bool isSelected;
 
-	public bool isSelected
+	public bool IsSelected
 	{
-		get { return _isSelected; }
+		get { return isSelected; }
 	}
 
-	public string iconName
+	public string IconName
 	{
-		get { return _iconName; }
+		get { return iconName; }
 	}
 
-	public int id
+	public int Id
 	{
-		get { return _id; }
+		get { return id; }
 	}
 
 	void Start()
 	{
-		_iconName = _type.ToString();
-		_id = _iconName.GetHashCode();
+		iconName = type.ToString();
+		id = iconName.GetHashCode();
 		UnitSelect.AddUnit(this);
 	}
 
 	void OnDestroy()
 	{
 		// когда юнит уничтожен, сообщаем какой именно и если он выбран, то будет обновлена панель иконок
-		UnitSelect.Internal.UnitDestroyed(_id, _isSelected);
+		UnitSelect.Internal.UnitDestroyed(id, isSelected);
 	}
 
 	public void Deselect() // вызов, если выделение юнита снято
 	{
-		_isSelected = false;
+		isSelected = false;
 	}
 
 	public void Select() // вызов, если юнит был выбран
 	{
-		_isSelected = true;
+		isSelected = true;
 	}
 
 	public void DoAction()

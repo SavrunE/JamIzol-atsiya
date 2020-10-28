@@ -14,7 +14,7 @@ public class UnitSelect : MonoBehaviour
 	[SerializeField] private UnitIcon[] icons; // здесь будут хранится иконки, которые мы создадим в редакторе
 
 #if UNITY_EDITOR
-	[SerializeField] private int width = 5, height = 5; // сколько создать иконок по ширине и высоте
+	[SerializeField] private int width = 3, height = 1; // сколько создать иконок по ширине и высоте
 	[SerializeField] private float offset = 10; // расстояние между ними
 #endif
 
@@ -63,14 +63,14 @@ public class UnitSelect : MonoBehaviour
 	{
 		foreach (UnitComponent target in _unitSelected)
 		{
-			if (target && target.id != id) target.Deselect();
+			if (target && target.Id != id) target.Deselect();
 		}
 
 		foreach (UnitIcon target in icons)
 		{
-			if (target.id != id)
+			if (target.Id != id)
 			{
-				target.icon.sprite = null;
+				target.Icon.sprite = null;
 				target.gameObject.SetActive(false);
 			}
 		}
@@ -80,22 +80,22 @@ public class UnitSelect : MonoBehaviour
 	{
 		for (int i = 0; i < icons.Length; i++)
 		{
-			if (icons[i] && icons[i].id == id && isSelected)
+			if (icons[i] && icons[i].Id == id && isSelected)
 			{
-				switch (icons[i].counter) // настройка иконок
+				switch (icons[i].Counter) // настройка иконок
 				{
 					case 1:
-						icons[i].id = 0;
-						icons[i].icon.sprite = null;
+						icons[i].Id = 0;
+						icons[i].Icon.sprite = null;
 						icons[i].gameObject.SetActive(false);
 						break;
 					case 2:
-						icons[i].counter--;
-						icons[i].iconCount.SetActive(false);
+						icons[i].Counter--;
+						icons[i].IconCount.SetActive(false);
 						break;
 					default:
-						icons[i].counter--;
-						icons[i].iconCountText.text = icons[i].counter.ToString();
+						icons[i].Counter--;
+						icons[i].IconCountText.text = icons[i].Counter.ToString();
 						break;
 				}
 
@@ -148,7 +148,7 @@ public class UnitSelect : MonoBehaviour
 
 		for (int i = 0; i < icons.Length; i++)
 		{
-			icons[i].icon.sprite = null;
+			icons[i].Icon.sprite = null;
 			icons[i].gameObject.SetActive(false);
 		}
 	}
@@ -165,7 +165,7 @@ public class UnitSelect : MonoBehaviour
 				if (rect.Contains(pos))
 				{
 					target.Select();
-					SetIcon(target.id, target.iconName);
+					SetIcon(target.Id, target.IconName);
 					_unitSelected.Add(target);
 				}
 			}
@@ -190,20 +190,20 @@ public class UnitSelect : MonoBehaviour
 	{
 		for (int i = 0; i < icons.Length; i++)
 		{
-			if (icons[i].icon.sprite == null)
+			if (icons[i].Icon.sprite == null)
 			{
-				icons[i].icon.sprite = GetSprite(iconName);
-				icons[i].iconCount.SetActive(false);
-				icons[i].id = id;
-				icons[i].counter = 1;
+				icons[i].Icon.sprite = GetSprite(iconName);
+				icons[i].IconCount.SetActive(false);
+				icons[i].Id = id;
+				icons[i].Counter = 1;
 				icons[i].gameObject.SetActive(true);
 				break;
 			}
-			else if (icons[i].id == id)
+			else if (icons[i].Id == id)
 			{
-				icons[i].counter++;
-				icons[i].iconCount.SetActive(true);
-				icons[i].iconCountText.text = icons[i].counter.ToString();
+				icons[i].Counter++;
+				icons[i].IconCount.SetActive(true);
+				icons[i].IconCountText.text = icons[i].Counter.ToString();
 				break;
 			}
 		}
@@ -260,7 +260,7 @@ public class UnitSelect : MonoBehaviour
 				rect = new Rect();
 				_unitSelected = new List<UnitComponent>();
 				unit.Select();
-				SetIcon(unit.id, unit.iconName);
+				SetIcon(unit.Id, unit.IconName);
 				_unitSelected.Add(unit);
 				return true;
 			}

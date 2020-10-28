@@ -4,30 +4,30 @@ using System.Collections;
 
 public class UnitIcon : MonoBehaviour
 {
-	[SerializeField] private Image _icon;
-	[SerializeField] private GameObject _iconCount;
-	[SerializeField] private Text _iconCountText;
+	[SerializeField] private Image icon;
+	[SerializeField] private GameObject iconCount;
+	[SerializeField] private Text iconCountText;
 
-	public int counter { get; set; }
-	public int id { get; set; }
+	public int Counter { get; set; }
+	public int Id { get; set; }
 
-	public Image icon
+	public Image Icon
 	{
-		get { return _icon; }
+		get { return icon; }
 	}
 
-	public GameObject iconCount
+	public GameObject IconCount
 	{
-		get { return _iconCount; }
+		get { return iconCount; }
 	}
 
-	public Text iconCountText
+	public Text IconCountText
 	{
-		get { return _iconCountText; }
+		get { return iconCountText; }
 	}
 
 	public void GetCurrent()
 	{
-		UnitSelect.Internal.GetCurrentUnit(id);
+		UnitSelect.Internal.GetCurrentUnit(Id);
 	}
 }
