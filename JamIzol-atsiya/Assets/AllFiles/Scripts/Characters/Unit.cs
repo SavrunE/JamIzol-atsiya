@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+//хуйня 
 [RequireComponent(typeof(NavMeshAgent))]
 public class Unit : MonoBehaviour
 {
     private Mover mover = null;
+
     private NavMeshAgent agent;
     public NavMeshAgent Agent
     {
@@ -27,7 +30,7 @@ public class Unit : MonoBehaviour
     private Vector3 targetPosition;
     void Start()
     {
-        UnitSpawner.AddUnit(transform);
+        UnitManager.Instance.AddUnit(this);
     }
 
     // Update is called once per frame

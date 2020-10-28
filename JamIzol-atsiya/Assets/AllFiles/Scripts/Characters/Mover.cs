@@ -7,25 +7,19 @@ using UnityEngine.Events;
 
 public class Mover : MonoBehaviour
 {
-    public bool canMove;
-    public RaycastHit raycastHit;
+    public bool CanMove;
+    public bool isActive;
+
+    public RaycastHit RaycastHit;
 
     private NavMeshAgent agent;
     private Camera mainCamera;
-
-    public Action<Vector3> DestinationEvent;
-
-    //public DestinationEvent DestinationEvent;
 
     public delegate void Click();
     public Click OnRightClick;
     void Start()
     {
-        //OnRightClick =  () => { Debug.Log("Hi"); };
-        //OnRightClick += delegate () { Debug.Log("q"); };
-        //OnRightClick();
-
-        canMove = true;
+        CanMove = true;
 
         agent = GetComponent<NavMeshAgent>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -35,25 +29,17 @@ public class Mover : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(1))
         {
-            
-            canMove = true;
+            CanMove = true;
 
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out raycastHit))
+            if (Physics.Raycast(ray, out RaycastHit))
             {
-                Vector3 point = raycastHit.point;
+                Vector3 point = RaycastHit.point;
                 agent.SetDestination(point);
-                DestinationEvent?.Invoke(point);
+
                 OnRightClick?.Invoke();
             }
         }
     }
-    private void MyTestDelegateFunction()
-    {
-        Debug.Log("Test");
-    }
 }
-//[System.Serializable]
-//public class DestinationEvent : UnityEvent<Vector3> { }
-//public class DestinationEventInt : UnityEvent<Int> { }

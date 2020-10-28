@@ -29,7 +29,5 @@ public class CubeController : MonoBehaviour
 
         material = MaterialRender.materialRender.GetMaterial(1);
         meshRenderer.material = material;
-
-        
     }
 }

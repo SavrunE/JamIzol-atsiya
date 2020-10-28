@@ -32,7 +32,7 @@ public class CharacterAnimation : MonoBehaviour
         float forwardVelocity = forwardVector.magnitude * Vector3.Dot(forwardVector, transform.forward);
         float rightVelocity = rightVector.magnitude * Vector3.Dot(rightVector, transform.right);
 
-        if ((forwardVelocity == 0 && rightVelocity == 0) || !mover.canMove)
+        if ((forwardVelocity == 0 && rightVelocity == 0) || !mover.CanMove)
         {
             isMoving = false;
             Dialog();

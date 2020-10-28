@@ -46,15 +46,14 @@ public class Attacker : MonoBehaviour
     }
     private void RightClick()
     {
-        target = mover.raycastHit.collider;
-        
+        target = mover.RaycastHit.collider;
+        isEnemy = CheckEnemy();
+
         //Проверим, не на тот-же коллайдер мы нажали
         if (checkTarget != target)
         {
             checkTarget = target;
             isAttack = false;
-
-            isEnemy = CheckEnemy();
             if (isEnemy)
             {
                 targetEnemy = target.gameObject.GetComponent<CubeController>();
@@ -74,7 +73,7 @@ public class Attacker : MonoBehaviour
     {
         if (Vector3.Distance(target.transform.position, transform.position) < 2f)
         {
-            mover.canMove = false;
+            mover.CanMove = false;
             isAttack = true;
         }
     }
@@ -91,7 +90,7 @@ public class Attacker : MonoBehaviour
         }
         else
         {
-            mover.canMove = true;
+            mover.CanMove = true;
             isAttack = false;
 
             target.gameObject.SetActive(false);
