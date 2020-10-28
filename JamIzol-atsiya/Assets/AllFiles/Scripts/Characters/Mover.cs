@@ -12,8 +12,6 @@ public class Mover : MonoBehaviour
 
     public RaycastHit RaycastHit;
 
-    private Camera mainCamera;
-
     public delegate void Click();
     public Click OnRightClick;
 
@@ -21,10 +19,9 @@ public class Mover : MonoBehaviour
     void Start()
     {
         CanMove = true;
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
-    public void MoveDestination(NavMeshAgent agent)
+    public void MoveDestination(NavMeshAgent agent, Camera mainCamera)
     {
         if (Input.GetMouseButtonUp(1))
         {

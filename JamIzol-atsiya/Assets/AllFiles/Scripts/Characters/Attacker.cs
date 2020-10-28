@@ -14,6 +14,7 @@ public class Attacker : MonoBehaviour
     private Collider checkTarget;
 
     private CubeController targetEnemy;
+    private UnitComponent unit;
     private Color targetColor;
 
     private bool isAttack = false;
@@ -25,6 +26,7 @@ public class Attacker : MonoBehaviour
 
     void Start()
     {
+        unit = GetComponent<UnitComponent>();
         mover = GetComponent<Mover>();
 
         OnDestroyWall += DestroyWallEvent;
@@ -46,6 +48,7 @@ public class Attacker : MonoBehaviour
     }
     private void RightClick()
     {
+        unit.NotBusy();
         target = mover.RaycastHit.collider;
         isEnemy = CheckEnemy();
 
@@ -56,6 +59,7 @@ public class Attacker : MonoBehaviour
             isAttack = false;
             if (isEnemy)
             {
+                unit.IsBusy();
                 targetEnemy = target.gameObject.GetComponent<CubeController>();
                 mesh = target.gameObject.GetComponent<MeshRenderer>();
                 targetColor = MaterialRender.materialRender.GetMaterial(targetEnemy.CubePower).color;
@@ -79,6 +83,7 @@ public class Attacker : MonoBehaviour
     }
     private void AttackEnemy()
     {
+        
         float maxHP = targetEnemy.MaxHP;
         float validHP = targetEnemy.ValidHP;
 
@@ -87,6 +92,7 @@ public class Attacker : MonoBehaviour
         {
             Color redPower = new Color((maxHP / validHP * (targetColor.r/Color.red.r)), targetColor.g, targetColor.b);
             mesh.material.color = Color.Lerp(targetColor, redPower, 1f);
+            unit.IsBusy();
         }
         else
         {
@@ -94,6 +100,8 @@ public class Attacker : MonoBehaviour
             isAttack = false;
 
             target.gameObject.SetActive(false);
+
+            unit.NotBusy();
         }
     }
 

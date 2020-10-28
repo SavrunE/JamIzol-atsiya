@@ -5,140 +5,179 @@ using System.Collections.Generic;
 
 public class UnitSelect : MonoBehaviour
 {
-	[SerializeField] private int maxUnits = 100;
-	[SerializeField] private Image mainRectImage;
+    [SerializeField] private int maxUnits = 100;
+    [SerializeField] private Image mainRectImage;
 
-	private Rect rect;
-	private bool canDraw;
-	private Vector2 startPos, endPos;
-	private Color original, clear, curColor;
-	private Sprite[] unitImage;
-	private static UnitComponent[] unit;
-	private static List<UnitComponent> unitSelected;
-	private static int unitCount;
-	public static int currentUnitCount
-	{
-		get { return unitCount; }
-	}
 
-	void Awake()
-	{
-		unitCount = 0;
-		unit = new UnitComponent[maxUnits];
-		unitSelected = new List<UnitComponent>();
-		original = mainRectImage.color;
-		clear = original;
-		clear.a = 0;
-		curColor = clear;
-		mainRectImage.color = clear;
-	}
+    private Rect rect;
+    private bool canDraw;
+    private Vector2 startPos, endPos;
+    private Color original, clear, curColor;
+    private Sprite[] unitImage;
+    private static UnitComponent[] units;
+    private static List<UnitComponent> unitSelected;
+    private static int unitCount;
+    public static int currentUnitCount
+    {
+        get { return unitCount; }
+    }
 
-	void Update()
-	{
-		if (Input.GetMouseButtonDown(0) && !ClickOnUnit())
-		{
-			Deselect();
-			rect = new Rect();
-			unitSelected = new List<UnitComponent>();
-			startPos = Input.mousePosition;
-			canDraw = true;
-		}
+    void Awake()
+    {
+        unitCount = 0;
+        units = new UnitComponent[maxUnits];
+        unitSelected = new List<UnitComponent>();
+        original = mainRectImage.color;
+        clear = original;
+        clear.a = 0;
+        curColor = clear;
+        mainRectImage.color = clear;
+    }
 
-		if (Input.GetMouseButtonUp(0) && canDraw)
-		{
-			curColor = clear;
-			canDraw = false;
-			SetSelected();
-		}
+    void Update()
+    {
+        DragSelecter();
+        if (Input.GetKeyDown(KeyCode.Q))
+            OneFreeUnitSelecter();
+        if (Input.GetKeyDown(KeyCode.W))
+            AllFreeUnitSelecter();
+    }
+    private void AllFreeUnitSelecter()
+    {
+        Deselect();
 
-		Draw();
+        foreach (UnitComponent target in units)
+        {
+            if (target && !target.CheckBusy)
+            {
+                SelectOneUnit(target);
+            }
+        }
+    }
+    private void OneFreeUnitSelecter()
+    {
+        Deselect();
 
-		mainRectImage.color = Color.Lerp(mainRectImage.color, curColor, 10 * Time.deltaTime);
-	}
+        foreach (UnitComponent target in units)
+        {
+            if (target && !target.CheckBusy)
+            {
+                Debug.Log("WHAT?");
+                SelectOneUnit(target);
+                break;
+            }
+        }
+    }
+    private void DragSelecter()
+    {
+        if (Input.GetMouseButtonDown(0) && !ClickOnUnit())
+        {
+            Deselect();
+            rect = new Rect();
+            unitSelected = new List<UnitComponent>();
+            startPos = Input.mousePosition;
+            canDraw = true;
+        }
 
-	public static void DoAction()
-	{
-		foreach (UnitComponent target in unitSelected)
-		{
-			if (target) target.DoAction();
-		}
-	}
+        if (Input.GetMouseButtonUp(0) && canDraw)
+        {
+            curColor = clear;
+            canDraw = false;
+            SetSelected();
+        }
 
-	public static void AddUnit(UnitComponent unitComponent)
-	{
-		for (int i = 0; i < unit.Length; i++)
-		{
-			if (unit[i] == null)
-			{
-				unit[i] = unitComponent;
-				unitCount++;
-				break;
-			}
-		}
-	}
+        Draw();
 
-	void Draw()
-	{
-		endPos = Input.mousePosition;
-		if (startPos == endPos || !canDraw) return;
+        mainRectImage.color = Color.Lerp(mainRectImage.color, curColor, 10 * Time.deltaTime);
+    }
 
-		curColor = original;
+    public static void DoAction()
+    {
+        foreach (UnitComponent target in unitSelected)
+        {
+            if (target) target.DoAction();
+        }
+    }
 
-		rect = new Rect(Mathf.Min(endPos.x, startPos.x),
-			Screen.height - Mathf.Max(endPos.y, startPos.y),
-			Mathf.Max(endPos.x, startPos.x) - Mathf.Min(endPos.x, startPos.x),
-			Mathf.Max(endPos.y, startPos.y) - Mathf.Min(endPos.y, startPos.y)
-		);
+    public static void AddUnit(UnitComponent unitComponent)
+    {
+        for (int i = 0; i < units.Length; i++)
+        {
+            if (units[i] == null)
+            {
+                units[i] = unitComponent;
+                unitCount++;
+                break;
+            }
+        }
+    }
 
-		mainRectImage.rectTransform.sizeDelta = new Vector2(rect.width, rect.height);
+    void Draw()
+    {
+        endPos = Input.mousePosition;
+        if (startPos == endPos || !canDraw) return;
 
-		mainRectImage.rectTransform.anchoredPosition = new Vector2(rect.x + mainRectImage.rectTransform.sizeDelta.x / 2,
-			Mathf.Max(endPos.y, startPos.y) - mainRectImage.rectTransform.sizeDelta.y / 2);
-	}
+        curColor = original;
 
-	void Deselect()
-	{
-		foreach (UnitComponent target in unitSelected)
-		{
-			if (target) target.Deselect();
-		}
-	}
+        rect = new Rect(Mathf.Min(endPos.x, startPos.x),
+            Screen.height - Mathf.Max(endPos.y, startPos.y),
+            Mathf.Max(endPos.x, startPos.x) - Mathf.Min(endPos.x, startPos.x),
+            Mathf.Max(endPos.y, startPos.y) - Mathf.Min(endPos.y, startPos.y)
+        );
 
-	void SetSelected() 
-	{
-		foreach (UnitComponent target in unit)
-		{
-			if (target)
-			{
-				Vector2 pos = Camera.main.WorldToScreenPoint(target.transform.position);
-				pos = new Vector2(pos.x, Screen.height - pos.y);
+        mainRectImage.rectTransform.sizeDelta = new Vector2(rect.width, rect.height);
 
-				if (rect.Contains(pos))
-				{
-					target.Select();
-					unitSelected.Add(target);
-				}
-			}
-		}
-	}
+        mainRectImage.rectTransform.anchoredPosition = new Vector2(rect.x + mainRectImage.rectTransform.sizeDelta.x / 2,
+            Mathf.Max(endPos.y, startPos.y) - mainRectImage.rectTransform.sizeDelta.y / 2);
+    }
 
-	bool ClickOnUnit() 
-	{
-		RaycastHit hit;
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		if (Physics.Raycast(ray, out hit))
-		{
-			UnitComponent unit = hit.collider.GetComponent<UnitComponent>();
-			if (unit)
-			{
-				Deselect();
-				rect = new Rect();
-				unitSelected = new List<UnitComponent>();
-				unit.Select();
-				unitSelected.Add(unit);
-				return true;
-			}
-		}
-		return false;
-	}
+    void Deselect()
+    {
+        foreach (UnitComponent target in unitSelected)
+        {
+            if (target) target.Deselect();
+        }
+    }
+
+    void SetSelected()
+    {
+        foreach (UnitComponent target in units)
+        {
+            if (target)
+            {
+                Vector2 cameraPosition = Camera.main.WorldToScreenPoint(target.transform.position);
+                cameraPosition = new Vector2(cameraPosition.x, Screen.height - cameraPosition.y);
+
+                if (rect.Contains(cameraPosition))
+                {
+                    target.Select();
+                    unitSelected.Add(target);
+                }
+            }
+        }
+    }
+
+    bool ClickOnUnit()
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit))
+        {
+            UnitComponent unit = hit.collider.GetComponent<UnitComponent>();
+            if (unit)
+            {
+                Deselect();
+                rect = new Rect();
+                SelectOneUnit(unit);
+                return true;
+            }
+        }
+        return false;
+    }
+    private void SelectOneUnit(UnitComponent unit)
+    {
+        unitSelected = new List<UnitComponent>();
+        unit.Select();
+        unitSelected.Add(unit);
+    }
 }

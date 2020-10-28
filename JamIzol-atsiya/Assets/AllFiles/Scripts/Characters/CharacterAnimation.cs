@@ -10,12 +10,14 @@ public class CharacterAnimation : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
     private Mover mover;
+    private UnitComponent unit;
     void Start()
     {
+        unit = GetComponent<UnitComponent>();
         agent = GetComponent<NavMeshAgent>();
 
-        Transform animationObject = GetComponentInChildren<Transform>().Find("Body");
-        animator = animationObject.GetComponent<Animator>();
+        Transform body = GetComponentInChildren<Transform>().Find("Body");
+        animator = body.GetComponent<Animator>();
 
         mover = GetComponent<Mover>();
 
