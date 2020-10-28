@@ -34,8 +34,6 @@ public class UnitComponent : MonoBehaviour
 
 	void OnDestroy()
 	{
-		// когда юнит уничтожен, сообщаем какой именно и если он выбран, то будет обновлена панель иконок
-		UnitSelect.Internal.UnitDestroyed(id, isSelected);
 	}
 
 	public void Deselect() // вызов, если выделение юнита снято
