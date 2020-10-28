@@ -3,21 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.FlagsAttribute]
-public enum CubeMaterial
-{
-    Metal_Brown,
-    Metal_Blue,
-
-    Brickwork_Brown,
-    Brickwork_Blue,
-
-    Stone_Brown,
-    Stone_Blue,
-
-    Grass_Brown,
-    Grass_Blue
-}
 [RequireComponent(typeof(MeshRenderer))]
 public class CubeController : MonoBehaviour
 {
@@ -34,14 +19,17 @@ public class CubeController : MonoBehaviour
     public Color ValidColor;
 
     private MeshRenderer meshRenderer;
-    private MaterialRender materialRender;
-    private void Awake()
+
+    private Material material; 
+    private void Start()
     {
         MaxHP = (CubePower + 1) * HardValue;
         ValidHP = MaxHP;
         meshRenderer = GetComponent<MeshRenderer>();
-        materialRender = GameObject.FindGameObjectWithTag("GameController").GetComponent<MaterialRender>();
 
-        meshRenderer.material = materialRender.AllCubesMaterial[CubePower];
+        material = MaterialRender.materialRender.GetMaterial(1);
+        meshRenderer.material = material;
+
+        
     }
 }

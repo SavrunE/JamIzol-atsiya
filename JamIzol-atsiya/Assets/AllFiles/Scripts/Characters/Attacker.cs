@@ -21,6 +21,8 @@ public class Attacker : MonoBehaviour
 
     private Action OnDestroyWall;
 
+    MeshRenderer mesh;
+
     void Start()
     {
         mover = GetComponent<Mover>();
@@ -56,7 +58,8 @@ public class Attacker : MonoBehaviour
             if (isEnemy)
             {
                 targetEnemy = target.gameObject.GetComponent<CubeController>();
-                targetColor = target.gameObject.GetComponent<MeshRenderer>().material.color;
+                mesh = target.gameObject.GetComponent<MeshRenderer>();
+                targetColor = MaterialRender.materialRender.GetMaterial(targetEnemy.CubePower).color;
             }
         }
     }
@@ -84,7 +87,7 @@ public class Attacker : MonoBehaviour
         if (validHP > 0)
         {
             Color redPower = new Color((maxHP / validHP * (targetColor.r/Color.red.r)), targetColor.g, targetColor.b);
-            target.gameObject.GetComponent<MeshRenderer>().material.color = Color.Lerp(targetColor, redPower, 1);
+            mesh.material.color = Color.Lerp(targetColor, redPower, 1f);
         }
         else
         {

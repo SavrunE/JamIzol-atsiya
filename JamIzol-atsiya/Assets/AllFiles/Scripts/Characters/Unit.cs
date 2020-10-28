@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Unit : MonoBehaviour
 {
-    public Mover mover;
+    private Mover mover = null;
     private NavMeshAgent agent;
     public NavMeshAgent Agent
     {
@@ -27,12 +27,15 @@ public class Unit : MonoBehaviour
     private Vector3 targetPosition;
     void Start()
     {
-
+        UnitSpawner.AddUnit(transform);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (mover)
+        {
+           // Agent.SetDestination(mover.DestinationEvent());
+        }
     }
 }
