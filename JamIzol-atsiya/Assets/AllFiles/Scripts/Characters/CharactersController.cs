@@ -11,7 +11,7 @@ public class CharactersController : MonoBehaviour
     private Mover mover;
     private Collider target;
     private Collider checkTarget;
-    private CubeController targetWall;
+    private CubeController targetEnemy;
     private Color targetColor;
 
     private bool canAttack;
@@ -38,7 +38,7 @@ public class CharactersController : MonoBehaviour
         {
             if (canAttack)
             {
-                AttackWall();
+                AttackEnemy();
             }
             else
             {
@@ -49,18 +49,19 @@ public class CharactersController : MonoBehaviour
     private void RightClick()
     {
         target = mover.raycastHit.collider;
-
-        targetIsEnemy = CheckEnemy();
-
+        
         //Проверим, не на тот-же коллайдер мы нажали
         if (checkTarget != target)
         {
             checkTarget = target;
-
             canAttack = false;
+
+            targetIsEnemy = CheckEnemy();
+
             if (targetIsEnemy)
             {
-                targetWall = GetCubeController(target, targetColor);
+                targetEnemy = target.gameObject.GetComponent<CubeController>();
+                targetColor = target.gameObject.GetComponent<MeshRenderer>().material.color;
             }
         }
     }
@@ -78,18 +79,20 @@ public class CharactersController : MonoBehaviour
             canAttack = true;
         }
     }
-    private void AttackWall()
+    private void AttackEnemy()
     {
-        float maxHP = targetWall.MaxHP;
+        float maxHP = targetEnemy.MaxHP;
+        float validHP = targetEnemy.ValidHP;
 
-        targetWall.ValidHP -= AttackDamage * Time.deltaTime;
-        if (targetWall.ValidHP > 0)
+        targetEnemy.ValidHP -= AttackDamage * Time.deltaTime;
+        if (validHP > 0)
         {
             mover.canMove = false;
 
-            float redColor = (maxHP - targetWall.ValidHP) / maxHP;
+            float redColor = (maxHP - validHP) / maxHP;
 
-            targetWall.gameObject.GetComponent<MeshRenderer>().material.color = Color.Lerp(targetColor, Color.red, redColor * Time.deltaTime);
+            Color redPower = new Color((maxHP / validHP * (targetColor.r/Color.red.r)), targetColor.g, targetColor.b);
+            target.gameObject.GetComponent<MeshRenderer>().material.color = Color.Lerp(targetColor, redPower, 1);
         }
         else
         {
@@ -102,13 +105,5 @@ public class CharactersController : MonoBehaviour
     private void DestroyWallEvent()
     {
 
-    }
-    private CubeController GetCubeController(Collider collider, Color targetColor)
-    {
-        CubeController result;
-        result = collider.gameObject.GetComponent<CubeController>();
-        targetColor = collider.gameObject.GetComponent<MeshRenderer>().material.color;
-
-        return result;
     }
 }
