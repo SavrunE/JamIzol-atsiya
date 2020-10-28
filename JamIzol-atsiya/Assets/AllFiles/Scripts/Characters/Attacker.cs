@@ -4,39 +4,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CharactersController : MonoBehaviour
+public class Attacker : MonoBehaviour
 {
     [Range(1, 100)]
     public int AttackDamage = 10;
     private Mover mover;
+
     private Collider target;
     private Collider checkTarget;
+
     private CubeController targetEnemy;
     private Color targetColor;
 
-    private bool canAttack;
-    private bool targetIsEnemy;
+    private bool isAttack = false;
+    private bool isEnemy = false;
 
     private Action OnDestroyWall;
-    private Action OnAttackWall;
 
     void Start()
     {
-        canAttack = false;
         mover = GetComponent<Mover>();
 
-        target = mover.raycastHit.collider;
-        checkTarget = target;
-
         OnDestroyWall += DestroyWallEvent;
-
         mover.OnRightClick += RightClick;
     }
     private void Update()
     {
-        if (targetIsEnemy)
+        if (isEnemy)
         {
-            if (canAttack)
+            if (isAttack)
             {
                 AttackEnemy();
             }
@@ -54,11 +50,10 @@ public class CharactersController : MonoBehaviour
         if (checkTarget != target)
         {
             checkTarget = target;
-            canAttack = false;
+            isAttack = false;
 
-            targetIsEnemy = CheckEnemy();
-
-            if (targetIsEnemy)
+            isEnemy = CheckEnemy();
+            if (isEnemy)
             {
                 targetEnemy = target.gameObject.GetComponent<CubeController>();
                 targetColor = target.gameObject.GetComponent<MeshRenderer>().material.color;
@@ -76,7 +71,8 @@ public class CharactersController : MonoBehaviour
     {
         if (Vector3.Distance(target.transform.position, transform.position) < 2f)
         {
-            canAttack = true;
+            mover.canMove = false;
+            isAttack = true;
         }
     }
     private void AttackEnemy()
@@ -87,18 +83,15 @@ public class CharactersController : MonoBehaviour
         targetEnemy.ValidHP -= AttackDamage * Time.deltaTime;
         if (validHP > 0)
         {
-            mover.canMove = false;
-
-            float redColor = (maxHP - validHP) / maxHP;
-
             Color redPower = new Color((maxHP / validHP * (targetColor.r/Color.red.r)), targetColor.g, targetColor.b);
             target.gameObject.GetComponent<MeshRenderer>().material.color = Color.Lerp(targetColor, redPower, 1);
         }
         else
         {
-            target.gameObject.SetActive(false);
             mover.canMove = true;
-            canAttack = false;
+            isAttack = false;
+
+            target.gameObject.SetActive(false);
         }
     }
 

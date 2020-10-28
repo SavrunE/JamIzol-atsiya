@@ -1505,7 +1505,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5db44b9d616234fa0d1426a44e073d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 10
+  AttackDamage: 1
+  mover: {fileID: 0}
+  target: {fileID: 0}
+  checkTarget: {fileID: 0}
+  targetEnemy: {fileID: 0}
+  targetColor:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  isAttack: 0
+  isEnemy: 0
 --- !u!1 &682008334
 GameObject:
   m_ObjectHideFlags: 0
@@ -2559,7 +2570,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5db44b9d616234fa0d1426a44e073d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 10
+  AttackDamage: 1
+  mover: {fileID: 0}
+  target: {fileID: 0}
+  checkTarget: {fileID: 0}
+  targetEnemy: {fileID: 0}
+  targetColor:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  isAttack: 0
+  isEnemy: 0
 --- !u!1 &1231153285
 GameObject:
   m_ObjectHideFlags: 0
@@ -2760,7 +2782,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5db44b9d616234fa0d1426a44e073d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 10
+  AttackDamage: 1
+  mover: {fileID: 0}
+  target: {fileID: 0}
+  checkTarget: {fileID: 0}
+  targetEnemy: {fileID: 0}
+  targetColor:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  isAttack: 0
+  isEnemy: 0
 --- !u!1 &1266160760
 GameObject:
   m_ObjectHideFlags: 0
