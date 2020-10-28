@@ -35,7 +35,7 @@ public class Mover : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(1))
         {
-            OnRightClick?.Invoke();
+            
             canMove = true;
 
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -45,6 +45,7 @@ public class Mover : MonoBehaviour
                 Vector3 point = raycastHit.point;
                 agent.SetDestination(point);
                 DestinationEvent?.Invoke(point);
+                OnRightClick?.Invoke();
             }
         }
     }

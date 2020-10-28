@@ -14,67 +14,77 @@ public class CharactersController : MonoBehaviour
     private CubeController targetWall;
     private Color targetColor;
 
-    private bool attackWall = false;
+    private bool canAttack;
+    private bool targetIsEnemy;
 
     private Action OnDestroyWall;
     private Action OnAttackWall;
-    
+
     void Start()
     {
+        canAttack = false;
         mover = GetComponent<Mover>();
 
         target = mover.raycastHit.collider;
         checkTarget = target;
 
         OnDestroyWall += DestroyWallEvent;
+
         mover.OnRightClick += RightClick;
     }
     private void Update()
     {
-        if (attackWall)
+        if (targetIsEnemy)
         {
-            AttackWall();
+            if (canAttack)
+            {
+                AttackWall();
+            }
+            else
+            {
+                CheckDistanceToWall();
+            }
         }
     }
     private void RightClick()
     {
-        
         target = mover.raycastHit.collider;
 
+        targetIsEnemy = CheckEnemy();
+
         //Проверим, не на тот-же коллайдер мы нажали
-        if(checkTarget != target)
+        if (checkTarget != target)
         {
-            attackWall = false;
             checkTarget = target;
 
-            if (target.tag == "Wall")
+            canAttack = false;
+            if (targetIsEnemy)
             {
                 targetWall = GetCubeController(target, targetColor);
-                StartCoroutine(CheckDistanceToWall());
             }
         }
     }
-    private IEnumerator CheckDistanceToWall()
+    private bool CheckEnemy()
+    {
+        if (target != null)
+            return target.tag == "Wall";
+        else
+            return false;
+    }
+    private void CheckDistanceToWall()
     {
         if (Vector3.Distance(target.transform.position, transform.position) < 2f)
         {
-            attackWall = true;
-            yield break;
-        }
-        else
-        {
-            yield return new WaitForEndOfFrame();
+            canAttack = true;
         }
     }
     private void AttackWall()
     {
-       float maxHP = targetWall.MaxHP;
+        float maxHP = targetWall.MaxHP;
 
         targetWall.ValidHP -= AttackDamage * Time.deltaTime;
-        Debug.Log(targetWall);
         if (targetWall.ValidHP > 0)
         {
-           
             mover.canMove = false;
 
             float redColor = (maxHP - targetWall.ValidHP) / maxHP;
@@ -85,10 +95,10 @@ public class CharactersController : MonoBehaviour
         {
             target.gameObject.SetActive(false);
             mover.canMove = true;
-            attackWall = false;
+            canAttack = false;
         }
     }
-   
+
     private void DestroyWallEvent()
     {
 
