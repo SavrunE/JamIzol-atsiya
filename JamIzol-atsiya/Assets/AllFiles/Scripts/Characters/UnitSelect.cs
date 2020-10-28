@@ -16,6 +16,45 @@ public class UnitSelect : MonoBehaviour
 	private static UnitComponent[] unit;
 	private static List<UnitComponent> unitSelected;
 	private static int unitCount;
+	public static int currentUnitCount
+	{
+		get { return unitCount; }
+	}
+
+	void Awake()
+	{
+		unitCount = 0;
+		unit = new UnitComponent[maxUnits];
+		unitSelected = new List<UnitComponent>();
+		original = mainRectImage.color;
+		clear = original;
+		clear.a = 0;
+		curColor = clear;
+		mainRectImage.color = clear;
+	}
+
+	void Update()
+	{
+		if (Input.GetMouseButtonDown(0) && !ClickOnUnit())
+		{
+			Deselect();
+			rect = new Rect();
+			unitSelected = new List<UnitComponent>();
+			startPos = Input.mousePosition;
+			canDraw = true;
+		}
+
+		if (Input.GetMouseButtonUp(0) && canDraw)
+		{
+			curColor = clear;
+			canDraw = false;
+			SetSelected();
+		}
+
+		Draw();
+
+		mainRectImage.color = Color.Lerp(mainRectImage.color, curColor, 10 * Time.deltaTime);
+	}
 
 	public static void DoAction()
 	{
@@ -36,23 +75,6 @@ public class UnitSelect : MonoBehaviour
 				break;
 			}
 		}
-	}
-
-	public static int currentUnitCount
-	{
-		get { return unitCount; }
-	}
-
-	void Awake()
-	{
-		unitCount = 0;
-		unit = new UnitComponent[maxUnits];
-		unitSelected = new List<UnitComponent>();
-		original = mainRectImage.color;
-		clear = original;
-		clear.a = 0;
-		curColor = clear;
-		mainRectImage.color = clear;
 	}
 
 	void Draw()
@@ -78,32 +100,8 @@ public class UnitSelect : MonoBehaviour
 	{
 		foreach (UnitComponent target in unitSelected)
 		{
-			Debug.Log("check");
 			if (target) target.Deselect();
 		}
-	}
-
-	void Update()
-	{
-		if (Input.GetMouseButtonDown(0) && !ClickOnUnit())
-		{
-			Deselect();
-			rect = new Rect();
-			unitSelected = new List<UnitComponent>();
-			startPos = Input.mousePosition;
-			canDraw = true;
-		}
-
-		if (Input.GetMouseButtonUp(0) && canDraw)
-		{
-			curColor = clear;
-			canDraw = false;
-			SetSelected();
-		}
-
-		Draw();
-
-		mainRectImage.color = Color.Lerp(mainRectImage.color, curColor, 10 * Time.deltaTime);
 	}
 
 	void SetSelected() 

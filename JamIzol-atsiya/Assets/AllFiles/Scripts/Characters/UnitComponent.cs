@@ -1,32 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.AI;
 
 public class UnitComponent : MonoBehaviour
 {
-	private int id;
-	private string iconName;
 	private bool isSelected;
+	private Mover mover;
+	private NavMeshAgent agent;
 
 	public bool IsSelected
 	{
 		get { return isSelected; }
 	}
 
-	public string IconName
-	{
-		get { return iconName; }
-	}
-
-	public int Id
-	{
-		get { return id; }
-	}
-
 	void Start()
 	{
+		agent = GetComponent<NavMeshAgent>();
+		mover = GetComponent<Mover>();
 		UnitSelect.AddUnit(this);
 	}
-
+	private void Update()
+	{
+		if (isSelected)
+		{
+			DoAction();
+		}
+	}
 	void OnDestroy()
 	{
 	}
@@ -43,8 +42,6 @@ public class UnitComponent : MonoBehaviour
 
 	public void DoAction()
 	{
-		// дополнительная опция, вызывается специальной командой: UnitSelect.DoAction()
-		// т.е. все юниты, которые в данный момент выбраны, выполнят данную функцию
-		// можно использовать, например, для отправки юнитов в указанную точку
+		mover.MoveDestination(agent);
 	}
 }

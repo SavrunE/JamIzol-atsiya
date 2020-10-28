@@ -12,20 +12,19 @@ public class Mover : MonoBehaviour
 
     public RaycastHit RaycastHit;
 
-    private NavMeshAgent agent;
     private Camera mainCamera;
 
     public delegate void Click();
     public Click OnRightClick;
+
+    public Vector3 Destination;
     void Start()
     {
         CanMove = true;
-
-        agent = GetComponent<NavMeshAgent>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
-    void Update()
+    public void MoveDestination(NavMeshAgent agent)
     {
         if (Input.GetMouseButtonUp(1))
         {
