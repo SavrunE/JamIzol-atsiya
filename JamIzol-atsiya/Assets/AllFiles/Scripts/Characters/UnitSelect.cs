@@ -5,10 +5,8 @@ using System.Collections.Generic;
 
 public class UnitSelect : MonoBehaviour
 {
-
-	[SerializeField] private int maxUnits = 100; // сколько всего может быть юнитов, под контролем игрока
-	[SerializeField] private Image mainRect; // чем будем рисовать рамку
-
+	[SerializeField] private int maxUnits = 100;
+	[SerializeField] private Image mainRectImage;
 
 	private Rect rect;
 	private bool canDraw;
@@ -19,8 +17,7 @@ public class UnitSelect : MonoBehaviour
 	private static List<UnitComponent> unitSelected;
 	private static int unitCount;
 
-
-	public static void DoAction() // запрос на выполнение какого-либо действия, если есть выбранные юниты
+	public static void DoAction()
 	{
 		foreach (UnitComponent target in unitSelected)
 		{
@@ -28,20 +25,20 @@ public class UnitSelect : MonoBehaviour
 		}
 	}
 
-	public static void AddUnit(UnitComponent comp) // добавить нового юнита
+	public static void AddUnit(UnitComponent unitComponent)
 	{
 		for (int i = 0; i < unit.Length; i++)
 		{
 			if (unit[i] == null)
 			{
-				unit[i] = comp;
+				unit[i] = unitComponent;
 				unitCount++;
 				break;
 			}
 		}
 	}
 
-	public static int currentUnitCount // текущее количество юнитов
+	public static int currentUnitCount
 	{
 		get { return unitCount; }
 	}
@@ -51,14 +48,14 @@ public class UnitSelect : MonoBehaviour
 		unitCount = 0;
 		unit = new UnitComponent[maxUnits];
 		unitSelected = new List<UnitComponent>();
-		original = mainRect.color;
+		original = mainRectImage.color;
 		clear = original;
 		clear.a = 0;
 		curColor = clear;
-		mainRect.color = clear;
+		mainRectImage.color = clear;
 	}
 
-	void Draw() // рисуем рамку
+	void Draw()
 	{
 		endPos = Input.mousePosition;
 		if (startPos == endPos || !canDraw) return;
@@ -71,13 +68,13 @@ public class UnitSelect : MonoBehaviour
 			Mathf.Max(endPos.y, startPos.y) - Mathf.Min(endPos.y, startPos.y)
 		);
 
-		mainRect.rectTransform.sizeDelta = new Vector2(rect.width, rect.height);
+		mainRectImage.rectTransform.sizeDelta = new Vector2(rect.width, rect.height);
 
-		mainRect.rectTransform.anchoredPosition = new Vector2(rect.x + mainRect.rectTransform.sizeDelta.x / 2,
-			Mathf.Max(endPos.y, startPos.y) - mainRect.rectTransform.sizeDelta.y / 2);
+		mainRectImage.rectTransform.anchoredPosition = new Vector2(rect.x + mainRectImage.rectTransform.sizeDelta.x / 2,
+			Mathf.Max(endPos.y, startPos.y) - mainRectImage.rectTransform.sizeDelta.y / 2);
 	}
 
-	void Deselect() // отмена текущего выбора
+	void Deselect()
 	{
 		foreach (UnitComponent target in unitSelected)
 		{
@@ -88,7 +85,7 @@ public class UnitSelect : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetMouseButtonDown(0) && !HitUnit())
+		if (Input.GetMouseButtonDown(0) && !ClickOnUnit())
 		{
 			Deselect();
 			rect = new Rect();
@@ -101,14 +98,33 @@ public class UnitSelect : MonoBehaviour
 		{
 			curColor = clear;
 			canDraw = false;
+			SetSelected();
 		}
 
 		Draw();
 
-		mainRect.color = Color.Lerp(mainRect.color, curColor, 10 * Time.deltaTime);
+		mainRectImage.color = Color.Lerp(mainRectImage.color, curColor, 10 * Time.deltaTime);
 	}
 
-	bool HitUnit() // клик по юниту или нет
+	void SetSelected() 
+	{
+		foreach (UnitComponent target in unit)
+		{
+			if (target)
+			{
+				Vector2 pos = Camera.main.WorldToScreenPoint(target.transform.position);
+				pos = new Vector2(pos.x, Screen.height - pos.y);
+
+				if (rect.Contains(pos))
+				{
+					target.Select();
+					unitSelected.Add(target);
+				}
+			}
+		}
+	}
+
+	bool ClickOnUnit() 
 	{
 		RaycastHit hit;
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -125,7 +141,6 @@ public class UnitSelect : MonoBehaviour
 				return true;
 			}
 		}
-		
 		return false;
 	}
 }

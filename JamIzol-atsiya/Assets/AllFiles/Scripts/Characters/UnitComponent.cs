@@ -3,9 +3,6 @@ using System.Collections;
 
 public class UnitComponent : MonoBehaviour
 {
-	
-	[SerializeField] private UnitType type; // выбрать тип юнита
-
 	private int id;
 	private string iconName;
 	private bool isSelected;
@@ -27,8 +24,6 @@ public class UnitComponent : MonoBehaviour
 
 	void Start()
 	{
-		iconName = type.ToString();
-		id = iconName.GetHashCode();
 		UnitSelect.AddUnit(this);
 	}
 
@@ -36,12 +31,12 @@ public class UnitComponent : MonoBehaviour
 	{
 	}
 
-	public void Deselect() // вызов, если выделение юнита снято
+	public void Deselect() 
 	{
 		isSelected = false;
 	}
 
-	public void Select() // вызов, если юнит был выбран
+	public void Select() 
 	{
 		isSelected = true;
 	}
