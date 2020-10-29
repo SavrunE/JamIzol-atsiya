@@ -7,8 +7,7 @@ using UnityEngine;
 public class CubeController : MonoBehaviour
 {
     [Range(0,7)]
-    public int CubePower ;
-    //мб успею сложность докрутить
+    public int CubePower = 1;
     public float HardValue = 10f;
 
     [HideInInspector]
@@ -27,7 +26,7 @@ public class CubeController : MonoBehaviour
         ValidHP = MaxHP;
         meshRenderer = GetComponent<MeshRenderer>();
 
-        material = MaterialRender.materialRender.GetMaterial(1);
+        material = MaterialRender.materialRender.GetMaterial(CubePower);
         meshRenderer.material = material;
     }
 }

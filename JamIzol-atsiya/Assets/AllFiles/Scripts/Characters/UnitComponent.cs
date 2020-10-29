@@ -6,6 +6,22 @@ public class UnitComponent : MonoBehaviour
 {
     [Range(1f, 100f)]
     public float AttackDamage = 10;
+    public float MoveSpeed
+    {
+        get
+        {
+            if (agent)
+            {
+                return agent.speed;
+            }
+            return 0f;
+        }
+        set
+        {
+            agent.speed = value;
+        }
+    }
+
     public GameObject SelectDisplay;
     private bool isSelected;
     private bool isBusy;
@@ -27,6 +43,7 @@ public bool CheckBusy { get { return isBusy; } set { } }
         agent = GetComponent<NavMeshAgent>();
         mover = GetComponent<Mover>();
         UnitSelect.AddUnit(this);
+        agent.speed += 1;
     }
     private void Update()
     {
@@ -36,7 +53,9 @@ public bool CheckBusy { get { return isBusy; } set { } }
         {
             mover.MoveDestination(agent, mainCamera);
         }
+        
     }
+    
     void OnDestroy()
     {
     }

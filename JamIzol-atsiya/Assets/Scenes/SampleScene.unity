@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.3
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.33
@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 44198700}
   - component: {fileID: 44198701}
   - component: {fileID: 44198702}
-  - component: {fileID: 44198703}
   - component: {fileID: 44198704}
   - component: {fileID: 44198705}
   m_Layer: 0
@@ -175,7 +174,7 @@ MonoBehaviour:
   - {fileID: 8690648313200636239, guid: d58481b3a888cb24da0ea0a8cb8b3451, type: 3}
   StartingRoom: {fileID: 8690648313200636239, guid: d58481b3a888cb24da0ea0a8cb8b3451, type: 3}
   LockationLength: 12
-  spawnCount: 12
+  spawnCount: 10
 --- !u!114 &44198701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,18 +206,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee54906764658a54795058b85018aba0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &44198703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 44198698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea95d4344ce0d764583b9ff8a7a4eaef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &44198704
@@ -459,8 +446,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1701789551}
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 1922686384}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1660,10 +1647,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42815c128caeb2248835f5e7a3560a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  sensitivity: 3
-  isDragging: 0
-  camera: {fileID: 0}
 --- !u!1 &523628020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1825,6 +1808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b4956e361a0e344bd2a4f03991075e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackDamage: 10
   SelectDisplay: {fileID: 900047785}
   radius: 10
 --- !u!114 &664932836
@@ -1839,7 +1823,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5db44b9d616234fa0d1426a44e073d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 1
 --- !u!135 &664932838
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2921,6 +2904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b4956e361a0e344bd2a4f03991075e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackDamage: 10
   SelectDisplay: {fileID: 1700267449}
   radius: 10
 --- !u!114 &1202995877
@@ -2935,7 +2919,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5db44b9d616234fa0d1426a44e073d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 1
 --- !u!135 &1202995879
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3149,6 +3132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b4956e361a0e344bd2a4f03991075e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackDamage: 10
   SelectDisplay: {fileID: 2103439348}
   radius: 10
 --- !u!114 &1265195019
@@ -3163,7 +3147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5db44b9d616234fa0d1426a44e073d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 1
 --- !u!135 &1265195021
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4327,7 +4310,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7194eb4c161e34a4aa38dfb7b3b3dc5f, type: 2}
+  - {fileID: 2100000, guid: f71301871f9d8f748a70accb540b2899, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5023,6 +5006,7 @@ Transform:
   m_Children:
   - {fileID: 44198699}
   - {fileID: 1394934846}
+  - {fileID: 132319321}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5712,7 +5696,9 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Character
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5057742633237325657, guid: dcbb2f7d18fb02a47b964a422c1172e6, type: 3}
+    - {fileID: 5057742633237325658, guid: dcbb2f7d18fb02a47b964a422c1172e6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dcbb2f7d18fb02a47b964a422c1172e6, type: 3}
 --- !u!1001 &5678397110243103784
 PrefabInstance:
@@ -5944,5 +5930,7 @@ PrefabInstance:
       propertyPath: m_Range
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6267405128326505348, guid: d89ca98cc85c6344588d6ad52ae8d809, type: 3}
+    - {fileID: 6267405128326505347, guid: d89ca98cc85c6344588d6ad52ae8d809, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d89ca98cc85c6344588d6ad52ae8d809, type: 3}

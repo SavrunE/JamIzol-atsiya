@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class RoomsPlacer : MonoBehaviour
 {
+    public static RoomsPlacer Instance;
     public Room[] RoomPrefab;
     public Room StartingRoom;
 
@@ -12,9 +14,27 @@ public class RoomsPlacer : MonoBehaviour
 
     public int LockationLength = 11;
     [SerializeField] private int spawnCount = 12;
+    public delegate void Click();
+    public Click OnUnitOverLevel;
+
+    private int x = 0, y = 0;
 
     private int centerMap;
 
+    private Vector2Int CurrentVector;
+    private HashSet<Vector2Int> vacantPlaces;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance = this)
+        {
+            Debug.Log(gameObject + " was destroyed");
+            Destroy(gameObject);
+        }
+    }
     private IEnumerator Start()
     {
         spawnedRooms = new Room[LockationLength, LockationLength];
@@ -24,7 +44,7 @@ public class RoomsPlacer : MonoBehaviour
         for (int i = 0; i < spawnCount; i++)
         {
             PlaceOneRoom();
-            yield return new WaitForSecondsRealtime(0.5f);
+            yield return new WaitForEndOfFrame();
         }
     }
     private void PlaceOneRoom()
@@ -47,10 +67,18 @@ public class RoomsPlacer : MonoBehaviour
             }
         }
 
-        Room newRoom = Instantiate(RoomPrefab[Random.Range(0,RoomPrefab.Length)]);
-        Vector2Int position = vacantPlaces.ElementAt(Random.Range(0, vacantPlaces.Count));
-        newRoom.transform.position = new Vector3(position.x - centerMap, 0, position.y - centerMap) * 12;
+        Room newRoom = Instantiate(RoomPrefab[UnityEngine.Random.Range(0, RoomPrefab.Length)]);
+        Vector2Int position = vacantPlaces.ElementAt(UnityEngine.Random.Range(0, vacantPlaces.Count));
+        newRoom.transform.position = new Vector3(position.x - centerMap, 0, position.y - centerMap) * LockationLength;
 
         spawnedRooms[position.x, position.y] = newRoom;
+    }
+    private void Update()
+    {
+        OnUnitOverLevel?.Invoke();
+        //if (unit.overLevel)
+        //{
+        //    unit.overLevel = false;
+        //}
     }
 }
