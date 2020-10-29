@@ -41,6 +41,20 @@ public class UnitSelect : MonoBehaviour
             OneFreeUnitSelecter();
         if (Input.GetKeyDown(KeyCode.W))
             AllFreeUnitSelecter();
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.A))
+            AllUnitSelecter();
+    }
+    private void AllUnitSelecter()
+    {
+        Deselect();
+
+        foreach (UnitComponent target in units)
+        {
+            if (target)
+            {
+                SelectOneUnit(target);
+            }
+        }
     }
     private void AllFreeUnitSelecter()
     {
