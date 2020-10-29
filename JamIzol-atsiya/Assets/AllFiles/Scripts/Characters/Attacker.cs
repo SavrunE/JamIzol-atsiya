@@ -6,8 +6,6 @@ using UnityEngine.Events;
 
 public class Attacker : MonoBehaviour
 {
-    [Range(1, 100)]
-    public int AttackDamage = 10;
     private Mover mover;
 
     private Collider target;
@@ -87,7 +85,7 @@ public class Attacker : MonoBehaviour
         float maxHP = targetEnemy.MaxHP;
         float validHP = targetEnemy.ValidHP;
 
-        targetEnemy.ValidHP -= AttackDamage * Time.deltaTime;
+        targetEnemy.ValidHP -= unit.AttackDamage * Time.deltaTime;
         if (validHP > 0)
         {
             Color redPower = new Color((maxHP / validHP * (targetColor.r/Color.red.r)), targetColor.g, targetColor.b);

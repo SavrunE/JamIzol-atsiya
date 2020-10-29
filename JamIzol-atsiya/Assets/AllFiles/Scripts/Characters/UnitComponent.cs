@@ -4,6 +4,8 @@ using UnityEngine.AI;
 
 public class UnitComponent : MonoBehaviour
 {
+    [Range(1f, 100f)]
+    public float AttackDamage = 10;
     public GameObject SelectDisplay;
     private bool isSelected;
     private bool isBusy;

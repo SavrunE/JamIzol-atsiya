@@ -31,7 +31,6 @@ public class MouseScrollWheel : MonoBehaviour
             if (moveScale != 0 && sqrMove < 1)
             {
                 zoomEndPositionY = target.position.y + moveScale * scrollSpeed;
-                Debug.Log(zoomEndPositionY);
                 point = CheckZoom(zoomEndPositionY, zoomMin, zoomMax);
                 Vector3 endPosition = new Vector3(target.position.x, point, target.position.z);
 
