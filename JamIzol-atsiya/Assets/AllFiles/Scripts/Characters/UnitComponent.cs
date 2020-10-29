@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class UnitComponent : MonoBehaviour
 {
+	public GameObject SelectDisplay;
 	private bool isSelected;
 	private bool isBusy;
 	private Camera mainCamera;
@@ -18,7 +19,7 @@ public class UnitComponent : MonoBehaviour
 
 	void Start()
 	{
-		mainCamera = mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+		mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 		agent = GetComponent<NavMeshAgent>();
 		mover = GetComponent<Mover>();
 		UnitSelect.AddUnit(this);
@@ -37,11 +38,19 @@ public class UnitComponent : MonoBehaviour
 	public void Deselect() 
 	{
 		isSelected = false;
+		if (SelectDisplay)
+		{
+			SelectDisplay.SetActive(false);
+		}
 	}
 
 	public void Select() 
 	{
 		isSelected = true;
+		if (SelectDisplay)
+		{
+			SelectDisplay.SetActive(true);
+		}
 	}
 	public void IsBusy()
 	{

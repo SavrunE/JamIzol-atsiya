@@ -52,7 +52,9 @@ public class UnitSelect : MonoBehaviour
         {
             if (target)
             {
-                SelectOneUnit(target);
+
+                target.Select();
+                unitSelected.Add(target);
             }
         }
     }
@@ -64,21 +66,18 @@ public class UnitSelect : MonoBehaviour
         {
             if (target && !target.CheckBusy)
             {
-                SelectOneUnit(target);
+                target.Select();
+                unitSelected.Add(target);
             }
         }
     }
     private void OneFreeUnitSelecter()
     {
-        Deselect();
-
         foreach (UnitComponent target in units)
         {
             if (target && !target.CheckBusy)
             {
-                Debug.Log("WHAT?");
                 SelectOneUnit(target);
-                break;
             }
         }
     }
@@ -88,7 +87,6 @@ public class UnitSelect : MonoBehaviour
         {
             Deselect();
             rect = new Rect();
-            unitSelected = new List<UnitComponent>();
             startPos = Input.mousePosition;
             canDraw = true;
         }
@@ -151,6 +149,7 @@ public class UnitSelect : MonoBehaviour
         {
             if (target) target.Deselect();
         }
+        unitSelected = new List<UnitComponent>();
     }
 
     void SetSelected()
@@ -180,7 +179,6 @@ public class UnitSelect : MonoBehaviour
             UnitComponent unit = hit.collider.GetComponent<UnitComponent>();
             if (unit)
             {
-                Deselect();
                 rect = new Rect();
                 SelectOneUnit(unit);
                 return true;
@@ -190,8 +188,9 @@ public class UnitSelect : MonoBehaviour
     }
     private void SelectOneUnit(UnitComponent unit)
     {
-        unitSelected = new List<UnitComponent>();
+        Deselect();
         unit.Select();
         unitSelected.Add(unit);
+        Debug.Log(unit);
     }
 }
