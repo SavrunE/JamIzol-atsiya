@@ -102,6 +102,12 @@ public class UnitSelect : MonoBehaviour
 
         mainRectImage.color = Color.Lerp(mainRectImage.color, curColor, 10 * Time.deltaTime);
     }
+    private void SelectOneUnit(UnitComponent unit)
+    {
+        Deselect();
+        unit.Select();
+        unitSelected.Add(unit);
+    }
 
     public static void DoAction()
     {
@@ -185,12 +191,5 @@ public class UnitSelect : MonoBehaviour
             }
         }
         return false;
-    }
-    private void SelectOneUnit(UnitComponent unit)
-    {
-        Deselect();
-        unit.Select();
-        unitSelected.Add(unit);
-        Debug.Log(unit);
     }
 }
