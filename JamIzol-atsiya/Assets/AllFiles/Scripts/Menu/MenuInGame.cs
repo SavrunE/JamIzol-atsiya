@@ -89,4 +89,9 @@ public class MenuInGame : MonoBehaviour
     {
         SceneManager.LoadScene("Menu"); //Переход на сцену с названием Menu
     }
+    public void StartGame()
+    {
+        SceneManager.LoadScene("SampleScene");
+
+    }
 }

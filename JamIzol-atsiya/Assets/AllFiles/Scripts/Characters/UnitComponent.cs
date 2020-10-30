@@ -58,6 +58,24 @@ public class UnitComponent : MonoBehaviour
         UnitSelect.AddUnit(this);
         agent.speed += 1;
 
+        StartCoroutine(RestoreHP());
+    }
+    private IEnumerator RestoreHP()
+    {
+        while(true)
+            {
+            float CheckHP = CurrentHP + 10f;
+            if (CheckHP < MaxHP)
+            {
+                CurrentHP = CheckHP;
+            }
+            else
+            {
+                CurrentHP = CheckHP;
+            }
+
+            yield return new WaitForSeconds(5f);
+        }
     }
     private void Update()
     {

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,10 +9,13 @@ public class ProjectileVelosity : MonoBehaviour
     public float TimeToDestroy = 10f;
     public float Damage = 25;
 
+    private int unitCount = 3;
+
     public Vector3 Target;
     private Rigidbody rigidBody;
 
     public static System.Action OnUnitDead;
+
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
@@ -47,8 +51,11 @@ public class ProjectileVelosity : MonoBehaviour
                 //Debug.Log(Damage);
                 if (unit.CurrentHP < 0)
                 {
-                    unit.gameObject.SetActive(false);
+                    
+                    Destroy(unit.gameObject);
                     OnUnitDead?.Invoke();
+                    StartCoroutine(StopTime());
+                    
                 }
             }
         }
@@ -67,6 +74,14 @@ public class ProjectileVelosity : MonoBehaviour
                 }
             }
         }
+
+    }
+    private IEnumerator StopTime()
+    {
+        yield return null;
+        var objs = GameObject.FindGameObjectsWithTag("Character");
+        if (objs.Length < 1)
+            Timer.timer.CanCheckTime = false;
 
     }
 }
