@@ -85,7 +85,6 @@ public class Attacker : MonoBehaviour
         float maxHP = targetEnemy.MaxHP;
         float validHP = targetEnemy.ValidHP;
 
-        Debug.Log(unit.AttackDamage);
         targetEnemy.ValidHP -= unit.AttackDamage * Time.deltaTime;
         if (validHP > 0)
         {

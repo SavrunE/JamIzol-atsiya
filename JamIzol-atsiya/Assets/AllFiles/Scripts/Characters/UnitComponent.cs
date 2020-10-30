@@ -23,9 +23,10 @@ public class UnitComponent : MonoBehaviour
     }
 
     public GameObject SelectDisplay;
+    public Camera mainCamera;
+
     private bool isSelected;
     private bool isBusy;
-    private Camera mainCamera;
     private Mover mover;
     private NavMeshAgent agent;
     [SerializeField] private float radius = 15f;

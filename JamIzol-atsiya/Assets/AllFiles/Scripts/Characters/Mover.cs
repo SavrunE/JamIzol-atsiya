@@ -34,8 +34,10 @@ public class Mover : MonoBehaviour
                 Vector3 point = RaycastHit.point;
                 agent.SetDestination(point);
 
+                
                 OnRightClick?.Invoke();
             }
         }
     }
+    
 }

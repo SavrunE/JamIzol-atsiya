@@ -11,12 +11,17 @@ public class CharacterAnimation : MonoBehaviour
     private Animator animator;
     private Mover mover;
     private UnitComponent unit;
+    private Transform body;
     void Start()
     {
         unit = GetComponent<UnitComponent>();
         agent = GetComponent<NavMeshAgent>();
 
-        Transform body = GetComponentInChildren<Transform>().Find("Body");
+        body = GetComponentInChildren<Transform>().Find("Body");
+        if (!body)
+        {
+            Debug.Log("CharacterAnimation need object Body on " + unit);
+        }
         animator = body.GetComponent<Animator>();
 
         mover = GetComponent<Mover>();

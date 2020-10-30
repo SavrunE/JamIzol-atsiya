@@ -8,6 +8,7 @@ public class CubeController : MonoBehaviour
 {
     [Range(0,7)]
     public int CubePower = 1;
+
     public float HardValue = 10f;
 
     [HideInInspector]
