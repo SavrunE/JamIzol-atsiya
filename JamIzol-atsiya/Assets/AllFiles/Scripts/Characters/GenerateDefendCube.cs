@@ -30,8 +30,8 @@ public class GenerateDefendCube : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit))
             {
                 Vector3 point = RaycastHit.point;
-
-                Instantiate(m_Prefab, transform.position, transform.rotation);
+                LookOnClick.LookAt(point);
+                Instantiate(m_Prefab, point , LookOnClick.rotation);
             }
         }
     }
