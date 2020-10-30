@@ -13,14 +13,14 @@ public class Attacker : MonoBehaviour
 
     private CubeController targetEnemy;
     private UnitComponent unit;
+
     private Color targetColor;
+    private MeshRenderer mesh;
 
     private bool isAttack = false;
     private bool isEnemy = false;
 
     private Action OnDestroyWall;
-
-    MeshRenderer mesh;
 
     void Start()
     {
@@ -28,7 +28,7 @@ public class Attacker : MonoBehaviour
         mover = GetComponent<Mover>();
 
         OnDestroyWall += DestroyWallEvent;
-        mover.OnRightClick += RightClick;
+        unit.OnRightClick += RightClick;
     }
     private void Update()
     {
@@ -81,7 +81,6 @@ public class Attacker : MonoBehaviour
     }
     private void AttackEnemy()
     {
-        
         float maxHP = targetEnemy.MaxHP;
         float validHP = targetEnemy.ValidHP;
 

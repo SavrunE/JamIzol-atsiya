@@ -35,6 +35,6 @@ public class GameController : MonoBehaviour
     }
     private void TestingHotKey(object sender, EventArgs e)
     {
-        Debug.Log(HotKey);
+       //Debug.Log(HotKey);
     }
 }

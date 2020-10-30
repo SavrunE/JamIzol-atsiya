@@ -109,14 +109,6 @@ public class UnitSelect : MonoBehaviour
         unitSelected.Add(unit);
     }
 
-    public static void DoAction()
-    {
-        foreach (UnitComponent target in unitSelected)
-        {
-            if (target) target.DoAction();
-        }
-    }
-
     public static void AddUnit(UnitComponent unitComponent)
     {
         for (int i = 0; i < units.Length; i++)

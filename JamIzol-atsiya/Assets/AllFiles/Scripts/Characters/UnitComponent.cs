@@ -29,9 +29,16 @@ public class UnitComponent : MonoBehaviour
     private bool isBusy;
     private Mover mover;
     private NavMeshAgent agent;
+    private GenerateDefendCube generater;
+    public NavMeshAgent Agent { get { return agent; } set { } }
     [SerializeField] private float radius = 15f;
 
-public bool CheckBusy { get { return isBusy; } set { } }
+
+    public delegate void Click();
+    public Click OnRightClick;
+
+
+    public bool CheckBusy { get { return isBusy; } set { } }
 
     public bool IsSelected
     {
@@ -43,8 +50,10 @@ public bool CheckBusy { get { return isBusy; } set { } }
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         agent = GetComponent<NavMeshAgent>();
         mover = GetComponent<Mover>();
+        generater = GetComponent<GenerateDefendCube>();
         UnitSelect.AddUnit(this);
         agent.speed += 1;
+
     }
     private void Update()
     {
@@ -52,12 +61,15 @@ public bool CheckBusy { get { return isBusy; } set { } }
 
         if (isSelected)
         {
-            mover.MoveDestination(agent, mainCamera);
+            if (Input.GetMouseButtonUp(1))
+            {
+                Moving();
+                OnRightClick?.Invoke();
+            }
         }
-        
     }
-    
-    void OnDestroy()
+
+    private void OnDestroy()
     {
     }
 
@@ -86,9 +98,12 @@ public bool CheckBusy { get { return isBusy; } set { } }
     {
         isBusy = false;
     }
-
-    public void DoAction()
+    public void Moving()
     {
-
+        mover.MoveDestination(agent, mainCamera);
+    }
+    public void StopMoving()
+    {
+        mover.StopMoving(agent);
     }
 }
