@@ -319,7 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemie: {fileID: 5190067254702994075, guid: 3e22eb483a530ab4ab6d87a21a7eb2b2, type: 3}
   Spawners: []
-  spawnTime: 5
+  spawnTime: 2
   CanSpawn: 0
 --- !u!1 &896429535
 GameObject:
@@ -1532,13 +1532,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barier
       objectReference: {fileID: 0}
+    - target: {fileID: 5940217019362771762, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
+      propertyPath: m_Carve
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.49999994
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1598,13 +1602,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barier (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5940217019362771762, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
+      propertyPath: m_Carve
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5000009
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1664,13 +1672,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barier (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5940217019362771762, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
+      propertyPath: m_Carve
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.499999
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1730,13 +1742,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barier (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5940217019362771762, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
+      propertyPath: m_Carve
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.49999994
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1796,13 +1812,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barier (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 5940217019362771762, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
+      propertyPath: m_Carve
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5000009
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1862,13 +1882,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barier (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5940217019362771762, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
+      propertyPath: m_Carve
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.499999
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1928,13 +1952,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barier (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 5940217019362771762, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
+      propertyPath: m_Carve
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.43
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5000009
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1998,13 +2026,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barier (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5940217019362771762, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
+      propertyPath: m_Carve
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.49999994
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2064,13 +2096,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barier (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 5940217019362771762, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
+      propertyPath: m_Carve
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.43
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5000009
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2134,13 +2170,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barier (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 5940217019362771762, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
+      propertyPath: m_Carve
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.49999994
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2200,13 +2240,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barier (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5940217019362771762, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
+      propertyPath: m_Carve
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.499999
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2266,13 +2310,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barier (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5940217019362771762, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
+      propertyPath: m_Carve
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.49999994
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6645463234938602990, guid: 65a6ae5611b63864f9c2cd8ba72ab7aa, type: 3}
       propertyPath: m_LocalPosition.z

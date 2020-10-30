@@ -32,9 +32,9 @@ public class SpawnEnemies : MonoBehaviour
         }
         while (CanSpawn)
         {
-            Debug.Log(Spawners[Random.Range(0, Spawners.Length)].position);
-            Instantiate(enemie, Spawners[Random.Range(0, Spawners.Length)].position, Quaternion.identity);
             yield return new WaitForSeconds(spawnTime);
+            Instantiate(enemie, Spawners[Random.Range(0, Spawners.Length)].position, Quaternion.identity);
         }
+        StartCoroutine( Spawner());
     }
 }

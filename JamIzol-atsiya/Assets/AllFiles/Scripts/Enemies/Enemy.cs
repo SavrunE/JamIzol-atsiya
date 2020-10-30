@@ -24,18 +24,24 @@ public class Enemy : MonoBehaviour
 
     private float speed = 10f;
 
-    public float MaxHP = 255;
+    public float MaxHP = 255f;
     public float CurrentHP;
 
+    private MeshRenderer mesh;
+    private Color targetColor;
+    private CubeController targetEnemy;
     void Start()
     {
         CurrentHP = MaxHP;
+        targetColor = gameObject.GetComponent< Renderer > ().material.color;
         agent = GetComponent<NavMeshAgent>();
+        mesh = GetComponent<MeshRenderer>();
         CheckTargets();
 
         StartCoroutine(Attack());
 
         StartCoroutine(MovingController());
+
 
         ProjectileVelosity.OnUnitDead += () => StopCoroutine(MovingController());
         ProjectileVelosity.OnUnitDead += CheckTargets;
@@ -55,14 +61,13 @@ public class Enemy : MonoBehaviour
         CheckNearEnemy();
         if (!nearEnemy)
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 
     void Update()
     {
-       // if (nearEnemy)
-           // transform.LookAt(nearEnemy.transform);
+      
     }
 
     private IEnumerator MovingController()
@@ -127,6 +132,12 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
+        if(nearEnemy)
         nearEnemyDistance = Vector3.Distance(transform.position, nearEnemy.transform.position);
+    }
+    public void TakeDamage()
+    {
+        Color redPower = new Color((MaxHP / CurrentHP * (targetColor.r / Color.red.r)), targetColor.g, targetColor.b);
+        mesh.material.color = Color.Lerp(targetColor, redPower, 1f);
     }
 }

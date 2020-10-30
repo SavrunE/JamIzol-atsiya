@@ -8,6 +8,7 @@ TagManager:
   - Interaction
   - Character
   - Wall
+  - Enemie
   layers:
   - Default
   - TransparentFX

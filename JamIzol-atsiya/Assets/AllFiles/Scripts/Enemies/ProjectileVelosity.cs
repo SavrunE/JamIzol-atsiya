@@ -6,7 +6,7 @@ public class ProjectileVelosity : MonoBehaviour
 {
     public float ProjectileSpeed = 3f;
     public float TimeToDestroy = 10f;
-    public float Damage = 40f;
+    public float Damage = 25;
 
     public Vector3 Target;
     private Rigidbody rigidBody;
@@ -22,7 +22,7 @@ public class ProjectileVelosity : MonoBehaviour
     }
     void Update()
     {
-        
+
     }
     private IEnumerator DestroyForTime()
     {
@@ -38,19 +38,35 @@ public class ProjectileVelosity : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Character" && other.tag == "Enemie")
+        if (other.tag == "Character")
         {
             UnitComponent unit = other.GetComponent<UnitComponent>();
             if (unit)
             {
                 unit.CurrentHP -= Damage;
                 //Debug.Log(Damage);
-                if (unit.CurrentHP< 0)
+                if (unit.CurrentHP < 0)
                 {
                     unit.gameObject.SetActive(false);
                     OnUnitDead?.Invoke();
                 }
             }
         }
+        if (other.tag == "Enemie")
+        {
+
+
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy)
+            {
+                enemy.CurrentHP -= Damage;
+                enemy.TakeDamage();
+                if (enemy.CurrentHP < 0)
+                {
+                    enemy.gameObject.SetActive(false);
+                }
+            }
+        }
+
     }
 }

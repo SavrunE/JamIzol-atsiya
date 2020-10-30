@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileSpeed: 7
   TimeToDestroy: 10
-  Damage: 40
+  Damage: 25
   Target: {x: 0, y: 0, z: 0}
 --- !u!54 &7813650965480098885
 Rigidbody:
