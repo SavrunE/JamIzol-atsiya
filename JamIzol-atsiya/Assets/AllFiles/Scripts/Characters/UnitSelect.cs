@@ -15,7 +15,7 @@ public class UnitSelect : MonoBehaviour
     private Color original, clear, curColor;
     private Sprite[] unitImage;
     private static UnitComponent[] units;
-    private static List<UnitComponent> unitSelected;
+    public static List<UnitComponent> unitSelected;
     private static int unitCount;
     public static int currentUnitCount
     {
@@ -58,7 +58,7 @@ public class UnitSelect : MonoBehaviour
             }
         }
     }
-    private void AllFreeUnitSelecter()
+    public void AllFreeUnitSelecter()
     {
         Deselect();
 
@@ -71,7 +71,7 @@ public class UnitSelect : MonoBehaviour
             }
         }
     }
-    private void OneFreeUnitSelecter()
+    public void OneFreeUnitSelecter()
     {
         foreach (UnitComponent target in units)
         {
@@ -149,7 +149,18 @@ public class UnitSelect : MonoBehaviour
         }
         unitSelected = new List<UnitComponent>();
     }
-
+    public UnitComponent TakeOneSelectUnit()
+    {
+        foreach (UnitComponent target in unitSelected)
+        {
+            if (target)
+            {
+                Debug.Log(target);
+                return target;
+            }
+        }
+        return null;
+    }
     void SetSelected()
     {
         foreach (UnitComponent target in units)

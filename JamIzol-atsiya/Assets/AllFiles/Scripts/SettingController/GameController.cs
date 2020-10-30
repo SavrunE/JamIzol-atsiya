@@ -5,36 +5,39 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public KeyCode HotKey = KeyCode.Space;
-    public event EventHandler<OnSpacePressedEventArgs> OnStopTime;//
+    public static GameController Instance;
+    public KeyCode KeyCodePlaceWall = KeyCode.Space;
+    public GameObject WallPrefab;
+    public float WallDistancePlace;
 
     public KeyCode OpenMenu = KeyCode.I;
     public event Action<String> OnOpenMenu;
+    public event Action OnPlaceWall;
 
     private int keyCount;
-    public class OnSpacePressedEventArgs : EventArgs//
+    
+    private void Awake()
     {
-        public int KeyCount;
-    }
-    private void Start()
-    {
-        OnStopTime += TestingHotKey;//
+        if (Instance ==null)
+        {
+            Instance = this;
+        }
+        else if (Instance == this)
+        {
+            Destroy(gameObject);
+        }
     }
   
     private void Update()
     {
-        if (Input.GetKeyDown(HotKey))
+        
+        if (Input.GetKeyDown(KeyCodePlaceWall))
         {
-            keyCount++;
-            if (OnStopTime != null) OnStopTime(this, new OnSpacePressedEventArgs { KeyCount = keyCount}); //OnStopTime?.Invoke(this, EventArgs.Empty);//
+            OnPlaceWall?.Invoke();
         }
         if (Input.GetKeyDown(OpenMenu)) 
         {
             OnOpenMenu?.Invoke("f");
         }
-    }
-    private void TestingHotKey(object sender, EventArgs e)
-    {
-       //Debug.Log(HotKey);
     }
 }

@@ -4,16 +4,27 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    //public Mesh[] BlockMeshes;
+    private int characterCount = 0;
     private void Start()
     {
-        //foreach(var filter in GetComponentsInChildren<MeshFilter>())
-        //{
-        //    if(filter.sharedMesh == BlockMeshes[0])
-        //    {
-        //        filter.sharedMesh = BlockMeshes[Random.Range(0, BlockMeshes.Length)];
-        //        filter.transform.rotation = Quaternion.Euler(-90, 0, 90 * Random.Range(0, 4));
-        //    }
-        //}
+     
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Character")
+        {
+            characterCount++;
+               SpawnEnemies spawner = GetComponentInChildren<SpawnEnemies>();
+            spawner.CanSpawn = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Character")
+        {
+            characterCount--;
+            SpawnEnemies spawner = GetComponentInChildren<SpawnEnemies>();
+            spawner.CanSpawn = true;
+        }
     }
 }

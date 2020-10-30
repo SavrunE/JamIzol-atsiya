@@ -23,7 +23,11 @@ public class UnitComponent : MonoBehaviour
     }
 
     public GameObject SelectDisplay;
+    [HideInInspector]
     public Camera mainCamera;
+
+    public float MaxHP = 100f;
+    public float CurrentHP;
 
     private bool isSelected;
     private bool isBusy;
@@ -37,7 +41,6 @@ public class UnitComponent : MonoBehaviour
     public delegate void Click();
     public Click OnRightClick;
 
-
     public bool CheckBusy { get { return isBusy; } set { } }
 
     public bool IsSelected
@@ -47,6 +50,7 @@ public class UnitComponent : MonoBehaviour
 
     void Start()
     {
+        CurrentHP = MaxHP;
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         agent = GetComponent<NavMeshAgent>();
         mover = GetComponent<Mover>();
@@ -68,9 +72,10 @@ public class UnitComponent : MonoBehaviour
             }
         }
     }
-
-    private void OnDestroy()
+ 
+    private void Dead()
     {
+
     }
 
     public void Deselect()
@@ -102,6 +107,7 @@ public class UnitComponent : MonoBehaviour
     {
         mover.MoveDestination(agent, mainCamera);
     }
+
     public void StopMoving()
     {
         mover.StopMoving(agent);
